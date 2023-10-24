@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://6ovm1au2civ4"]
+
+[ext_resource type="Script" path="res://difficulty_mode_menu.gd" id="1_dga8j"]
+[ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://background_buttons/unlock_button.png" id="2_65m22"]
+[ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://background_buttons/k-temn.png" id="3_lc083"]
+[ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://background_buttons/lock_button.png" id="4_bh85t"]
+[ext_resource type="PackedScene" uid="uid://lwvm5pmyvvli" path="res://background/bg_main.tscn" id="5_mmbtt"]
+[ext_resource type="PackedScene" uid="uid://0mdjnjd1kus3" path="res://settings_button.tscn" id="6_vt56d"]
+
+[node name="difficulty_mode_menu" type="Node2D"]
+script = ExtResource("1_dga8j")
+
+[node name="EasyModeButton" type="TextureButton" parent="."]
+offset_left = 63.0
+offset_top = 85.0
+offset_right = 273.0
+offset_bottom = 155.0
+texture_normal = ExtResource("2_65m22")
+texture_pressed = ExtResource("3_lc083")
+
+[node name="Label" type="Label" parent="EasyModeButton"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 196.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Легкий"
+horizontal_alignment = 1
+
+[node name="NormalModeButton" type="TextureButton" parent="."]
+offset_left = 64.0
+offset_top = 168.0
+offset_right = 274.0
+offset_bottom = 238.0
+texture_normal = ExtResource("2_65m22")
+texture_pressed = ExtResource("3_lc083")
+texture_disabled = ExtResource("4_bh85t")
+
+[node name="Label" type="Label" parent="NormalModeButton"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 13.0
+offset_right = 193.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Нормальный
+"
+horizontal_alignment = 1
+
+[node name="EditingDeckButton" type="TextureButton" parent="."]
+offset_left = 63.0
+offset_top = 254.0
+offset_right = 273.0
+offset_bottom = 324.0
+texture_normal = ExtResource("2_65m22")
+texture_pressed = ExtResource("3_lc083")
+texture_disabled = ExtResource("4_bh85t")
+
+[node name="Label" type="Label" parent="EditingDeckButton"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 193.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Колода
+"
+horizontal_alignment = 1
+
+[node name="BackModeButton" type="TextureButton" parent="."]
+offset_left = 63.0
+offset_top = 340.0
+offset_right = 273.0
+offset_bottom = 410.0
+texture_normal = ExtResource("2_65m22")
+texture_pressed = ExtResource("3_lc083")
+texture_disabled = ExtResource("4_bh85t")
+
+[node name="Label" type="Label" parent="BackModeButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 197.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Назад
+"
+horizontal_alignment = 1
+
+[node name="MainBackground" parent="." instance=ExtResource("5_mmbtt")]
+position = Vector2(179, 444)
+
+[node name="SettingsButton" parent="." instance=ExtResource("6_vt56d")]
+position = Vector2(1, -2)
+
+[connection signal="pressed" from="BackModeButton" to="." method="_on_back_mode_button_pressed"]

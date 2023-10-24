@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://lwvm5pmyvvli"]
+
+[ext_resource type="PackedScene" uid="uid://ndvst867wrl8" path="res://background/bg_paralax_horizontal.tscn" id="2_66b4a"]
+[ext_resource type="PackedScene" uid="uid://duwaswjotw0tf" path="res://background/bg_grass.tscn" id="3_5r48l"]
+[ext_resource type="Script" path="res://background/bg_grass.gd" id="4_b4c2u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_48v10"]
+load_path = "res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"
+
+[node name="MainBackground" type="Node2D"]
+
+[node name="HomeLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Sprite2D" type="Sprite2D" parent="HomeLayer"]
+position = Vector2(360, -58)
+scale = Vector2(1.12266, 1.12266)
+texture = SubResource("CompressedTexture2D_48v10")
+
+[node name="GrassLayer2" type="CanvasLayer" parent="."]
+layer = -9
+
+[node name="BackgroundGrass" parent="GrassLayer2" instance=ExtResource("3_5r48l")]
+script = ExtResource("4_b4c2u")
+
+[node name="BGParalaxHorizontal" parent="." instance=ExtResource("2_66b4a")]
+layer = -9

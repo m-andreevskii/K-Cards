@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://ndvst867wrl8"]
+
+[sub_resource type="GDScript" id="GDScript_dccw5"]
+script/source = "extends ParallaxBackground
+
+var speed = 100
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	scroll_offset.x -= speed * delta
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bweo2"]
+load_path = "res://.godot/imported/дальние облака.png-bb5df97ba3883309fb0cbdc0ffc9c3f3.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wm0d3"]
+load_path = "res://.godot/imported/облака.png-ee6c96e7c680302c74cf384c01502a40.ctex"
+
+[node name="BGParalaxHorizontal" type="ParallaxBackground"]
+script = SubResource("GDScript_dccw5")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(650, 0)
+
+[node name="ДальниеОблака" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(339, 167)
+texture = SubResource("CompressedTexture2D_bweo2")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(650, 0)
+
+[node name="Облака" type="Sprite2D" parent="ParallaxLayer4"]
+position = Vector2(335, 215)
+texture = SubResource("CompressedTexture2D_wm0d3")

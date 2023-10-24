@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://n3wcx86ku1vb"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_g2qge"]
+[ext_resource type="PackedScene" uid="uid://cn55up6v26t46" path="res://bg_paralax_horizontal.tscn" id="1_is47p"]
+[ext_resource type="Texture2D" uid="uid://dpe5u0q40co4p" path="res://background/основное поле2.png" id="2_2ymd6"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_bmqgi"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_g2qge")
+
+[node name="CampaignButton" type="Button" parent="."]
+offset_left = 71.0
+offset_top = 48.0
+offset_right = 306.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 35
+text = "Кампания"
+
+[node name="BattlesButton" type="Button" parent="."]
+offset_left = 76.0
+offset_top = 148.0
+offset_right = 309.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 35
+text = "Сражения"
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 79.0
+offset_top = 344.0
+offset_right = 313.0
+offset_bottom = 407.0
+theme_override_font_sizes/font_size = 35
+text = "Выход"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 79.0
+offset_top = 253.0
+offset_right = 310.0
+offset_bottom = 316.0
+theme_override_font_sizes/font_size = 35
+text = "Настройки"
+
+[node name="BGParalaxHorizontal" parent="." instance=ExtResource("1_is47p")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 240)
+script = ExtResource("2_bmqgi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(361.5, -24)
+scale = Vector2(1.12656, 1.05625)
+texture = ExtResource("2_2ymd6")

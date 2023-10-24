@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://n3wcx86ku1vb"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_g2qge"]
+[ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://background_buttons/unlock_button.png" id="2_c2pf5"]
+[ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://background_buttons/k-temn.png" id="3_w1her"]
+[ext_resource type="PackedScene" uid="uid://lwvm5pmyvvli" path="res://background/bg_main.tscn" id="3_x73b8"]
+[ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://background_buttons/lock_button.png" id="3_xkltg"]
+[ext_resource type="PackedScene" uid="uid://0mdjnjd1kus3" path="res://settings_button.tscn" id="6_cqaog"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_g2qge")
+
+[node name="ButtonsLayer" type="CanvasLayer" parent="."]
+layer = -8
+
+[node name="FirstButton" type="Button" parent="ButtonsLayer"]
+offset_left = 233.0
+offset_top = -322.0
+offset_right = 458.0
+offset_bottom = -252.0
+theme_override_font_sizes/font_size = 35
+text = "Играть
+"
+
+[node name="CampaignButton" type="TextureButton" parent="ButtonsLayer"]
+offset_left = 67.0
+offset_top = 97.0
+offset_right = 277.0
+offset_bottom = 167.0
+disabled = true
+texture_normal = ExtResource("2_c2pf5")
+texture_disabled = ExtResource("3_xkltg")
+
+[node name="Label" type="Label" parent="ButtonsLayer/CampaignButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 13.0
+offset_right = 178.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Кампания"
+horizontal_alignment = 1
+
+[node name="BattlesButton" type="TextureButton" parent="ButtonsLayer"]
+offset_left = 67.0
+offset_top = 189.0
+offset_right = 277.0
+offset_bottom = 259.0
+texture_normal = ExtResource("2_c2pf5")
+texture_pressed = ExtResource("3_w1her")
+texture_disabled = ExtResource("3_xkltg")
+
+[node name="Label" type="Label" parent="ButtonsLayer/BattlesButton"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 13.0
+offset_right = 180.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Сражения
+"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="ButtonsLayer"]
+offset_left = 66.0
+offset_top = 277.0
+offset_right = 276.0
+offset_bottom = 347.0
+texture_normal = ExtResource("2_c2pf5")
+texture_pressed = ExtResource("3_w1her")
+texture_disabled = ExtResource("3_xkltg")
+
+[node name="Label" type="Label" parent="ButtonsLayer/ExitButton"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 13.0
+offset_right = 182.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Выход"
+horizontal_alignment = 1
+
+[node name="MainBackground" parent="." instance=ExtResource("3_x73b8")]
+position = Vector2(79, 433)
+
+[node name="SettingsButton" parent="." instance=ExtResource("6_cqaog")]
+position = Vector2(4, -2)
+
+[connection signal="pressed" from="ButtonsLayer/BattlesButton" to="." method="_on_battles_button_pressed"]
+[connection signal="pressed" from="ButtonsLayer/ExitButton" to="." method="_on_exit_button_pressed"]

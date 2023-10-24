@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://duwaswjotw0tf"]
+
+[sub_resource type="Animation" id="Animation_0xdet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_h0hwu"]
+resource_name = "grass_animation"
+length = 1.82
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jy4gg"]
+_data = {
+"RESET": SubResource("Animation_0xdet"),
+"grass_animation": SubResource("Animation_h0hwu")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vb21v"]
+load_path = "res://.godot/imported/сено.png-b6945e15ac12b9cdb4598d358e306dc0.ctex"
+
+[node name="BackgroundGrass" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_jy4gg")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(360, 238)
+scale = Vector2(1.12344, 1.00625)
+texture = SubResource("CompressedTexture2D_vb21v")
+hframes = 10

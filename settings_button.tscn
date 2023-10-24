@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0mdjnjd1kus3"]
+
+[ext_resource type="Texture2D" uid="uid://b8xvvfja0afjn" path="res://background_buttons/k-shest.png" id="1_rwt1p"]
+[ext_resource type="Texture2D" uid="uid://n6gxsq4kgvyu" path="res://background_buttons/k-shest-temn.png" id="2_rhtbf"]
+
+[node name="SettingsButton" type="Node2D"]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 618.0
+offset_top = 12.0
+offset_right = 708.0
+offset_bottom = 77.0
+texture_normal = ExtResource("1_rwt1p")
+texture_pressed = ExtResource("2_rhtbf")
