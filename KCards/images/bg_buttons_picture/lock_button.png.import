@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n6gxsq4kgvyu"
-path="res://.godot/imported/k-shest-temn.png-30b10d45a6e7a6d0767355590813b273.ctex"
+uid="uid://dkqp1aemjln4s"
+path="res://.godot/imported/lock_button.png-6d86364aa7cfd2bfd752fb3e49ebea08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_buttons/k-shest-temn.png"
-dest_files=["res://.godot/imported/k-shest-temn.png-30b10d45a6e7a6d0767355590813b273.ctex"]
+source_file="res://KCards/images/bg_buttons_picture/lock_button.png"
+dest_files=["res://.godot/imported/lock_button.png-6d86364aa7cfd2bfd752fb3e49ebea08.ctex"]
 
 [params]
 

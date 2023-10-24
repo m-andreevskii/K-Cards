@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtdnl2r0llkms"
-path="res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"
+uid="uid://bq0f3rcuui6bk"
+path="res://.godot/imported/сено.png-bc6e12d371d484860c5d4f5f8310a685.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_picture/основной фон.png"
-dest_files=["res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"]
+source_file="res://KCards/images/bg_picture/сено.png"
+dest_files=["res://.godot/imported/сено.png-bc6e12d371d484860c5d4f5f8310a685.ctex"]
 
 [params]
 

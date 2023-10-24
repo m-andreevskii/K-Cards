@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df8wjj71st2s7"
-path="res://.godot/imported/звезды.png-52d1b64084d16d6c39860094007239fa.ctex"
+uid="uid://fojtxprtip82"
+path="res://.godot/imported/луна.png-b41db8131b14c39ed4175389b810fd12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_picture/звезды.png"
-dest_files=["res://.godot/imported/звезды.png-52d1b64084d16d6c39860094007239fa.ctex"]
+source_file="res://KCards/images/bg_picture/луна.png"
+dest_files=["res://.godot/imported/луна.png-b41db8131b14c39ed4175389b810fd12.ctex"]
 
 [params]
 

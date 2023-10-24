@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3sde7t8k04x4"]
 
-[ext_resource type="Script" path="res://SceneTransition.gd" id="1_rtv62"]
-[ext_resource type="Texture2D" uid="uid://dtdnl2r0llkms" path="res://background_picture/основной фон.png" id="2_qrwc7"]
+[ext_resource type="Script" path="res://KCards/scenes/scene_transition.gd" id="1_02c0n"]
+[ext_resource type="Texture2D" uid="uid://dtdnl2r0llkms" path="res://KCards/images/bg_picture/основной фон.png" id="2_yygyq"]
 
 [sub_resource type="Animation" id="Animation_x6ux7"]
 resource_name = "RESET"
@@ -42,7 +42,7 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
-script = ExtResource("1_rtv62")
+script = ExtResource("1_02c0n")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -51,7 +51,7 @@ offset_top = -228.0
 offset_right = 724.0
 offset_bottom = 799.0
 mouse_filter = 2
-texture = ExtResource("2_qrwc7")
+texture = ExtResource("2_yygyq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

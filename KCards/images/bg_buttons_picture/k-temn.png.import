@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kam5g042pbtj"
-path="res://.godot/imported/k-temn.png-729e529f8dca1c6a3f198c4949598a10.ctex"
+path="res://.godot/imported/k-temn.png-2cd1db13fe987ff9938e7510b1816893.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_buttons/k-temn.png"
-dest_files=["res://.godot/imported/k-temn.png-729e529f8dca1c6a3f198c4949598a10.ctex"]
+source_file="res://KCards/images/bg_buttons_picture/k-temn.png"
+dest_files=["res://.godot/imported/k-temn.png-2cd1db13fe987ff9938e7510b1816893.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwm7bghxxnumd"]
 
-[ext_resource type="Texture2D" uid="uid://df8wjj71st2s7" path="res://background_picture/звезды.png" id="1_v2seq"]
-[ext_resource type="Texture2D" uid="uid://fojtxprtip82" path="res://background_picture/луна.png" id="2_htaye"]
-[ext_resource type="Script" path="res://background/BGParalaxClouds.gd" id="3_0aoqq"]
-[ext_resource type="Texture2D" uid="uid://d3byikvq8iwcw" path="res://background_picture/облако 1.png" id="4_dkb0p"]
-[ext_resource type="Texture2D" uid="uid://b4lufhap6wl8m" path="res://background_picture/облако2.png" id="5_jevy6"]
-[ext_resource type="Texture2D" uid="uid://dyhrli5modyqk" path="res://background_picture/дальние облака.png" id="6_xd2me"]
+[ext_resource type="Texture2D" uid="uid://df8wjj71st2s7" path="res://KCards/images/bg_picture/звезды.png" id="1_3ksor"]
+[ext_resource type="Texture2D" uid="uid://fojtxprtip82" path="res://KCards/images/bg_picture/луна.png" id="2_k7bt3"]
+[ext_resource type="Script" path="res://KCards/scenes/background/BGParalaxClouds.gd" id="3_p3h5j"]
+[ext_resource type="Texture2D" uid="uid://d3byikvq8iwcw" path="res://KCards/images/bg_picture/облако 1.png" id="4_lpsuk"]
+[ext_resource type="Texture2D" uid="uid://b4lufhap6wl8m" path="res://KCards/images/bg_picture/облако2.png" id="5_et6ak"]
+[ext_resource type="Texture2D" uid="uid://dyhrli5modyqk" path="res://KCards/images/bg_picture/дальние облака.png" id="6_tmcpl"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_07pnh"]
 load_path = "res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"
@@ -23,14 +23,14 @@ texture = SubResource("CompressedTexture2D_07pnh")
 [node name="Звезды" type="Sprite2D" parent="Layer/Небо"]
 position = Vector2(-1.33614, -46.3185)
 scale = Vector2(0.995125, 0.896309)
-texture = ExtResource("1_v2seq")
+texture = ExtResource("1_3ksor")
 
 [node name="Луна" type="Sprite2D" parent="Layer/Небо"]
-texture = ExtResource("2_htaye")
+texture = ExtResource("2_k7bt3")
 
 [node name="BGParalaxClouds" type="ParallaxBackground" parent="."]
 layer = -9
-script = ExtResource("3_0aoqq")
+script = ExtResource("3_p3h5j")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BGParalaxClouds"]
 motion_scale = Vector2(0.8, 1)
@@ -38,11 +38,11 @@ motion_mirroring = Vector2(880, 0)
 
 [node name="Облако1" type="Sprite2D" parent="BGParalaxClouds/ParallaxLayer"]
 position = Vector2(605, 454)
-texture = ExtResource("4_dkb0p")
+texture = ExtResource("4_lpsuk")
 
 [node name="Облако2" type="Sprite2D" parent="BGParalaxClouds/ParallaxLayer"]
 position = Vector2(86, 440)
-texture = ExtResource("5_jevy6")
+texture = ExtResource("5_et6ak")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="BGParalaxClouds"]
 motion_scale = Vector2(0.4, 1)
@@ -51,4 +51,4 @@ motion_mirroring = Vector2(860, 0)
 [node name="ДальниеОблака" type="Sprite2D" parent="BGParalaxClouds/ParallaxLayer2"]
 position = Vector2(376, 475)
 scale = Vector2(1.07469, 1.04792)
-texture = ExtResource("6_xd2me")
+texture = ExtResource("6_tmcpl")

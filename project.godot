@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="KCards"
-run/main_scene="res://welcome_window.tscn"
+run/main_scene="res://KCards/scenes/welcome_window.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneTransition="*res://scene_transition.tscn"
+SceneTransition="*res://KCards/scenes/scene_transition.tscn"
 
 [display]
 

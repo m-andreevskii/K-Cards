@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2xmfgtiygb4c"
-path="res://.godot/imported/облака.png-ee6c96e7c680302c74cf384c01502a40.ctex"
+uid="uid://b8xvvfja0afjn"
+path="res://.godot/imported/k-shest.png-8c94b1b7caf9b554c6d057ef92fe92eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_picture/облака.png"
-dest_files=["res://.godot/imported/облака.png-ee6c96e7c680302c74cf384c01502a40.ctex"]
+source_file="res://KCards/images/bg_buttons_picture/k-shest.png"
+dest_files=["res://.godot/imported/k-shest.png-8c94b1b7caf9b554c6d057ef92fe92eb.ctex"]
 
 [params]
 

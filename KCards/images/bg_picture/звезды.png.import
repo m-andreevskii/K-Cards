@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyhrli5modyqk"
-path="res://.godot/imported/дальние облака.png-bb5df97ba3883309fb0cbdc0ffc9c3f3.ctex"
+uid="uid://df8wjj71st2s7"
+path="res://.godot/imported/звезды.png-29582c1f1a00a470f8bacde9599f6f71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_picture/дальние облака.png"
-dest_files=["res://.godot/imported/дальние облака.png-bb5df97ba3883309fb0cbdc0ffc9c3f3.ctex"]
+source_file="res://KCards/images/bg_picture/звезды.png"
+dest_files=["res://.godot/imported/звезды.png-29582c1f1a00a470f8bacde9599f6f71.ctex"]
 
 [params]
 

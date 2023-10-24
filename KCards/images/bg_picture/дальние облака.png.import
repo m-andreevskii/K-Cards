@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq0f3rcuui6bk"
-path="res://.godot/imported/сено.png-b6945e15ac12b9cdb4598d358e306dc0.ctex"
+uid="uid://dyhrli5modyqk"
+path="res://.godot/imported/дальние облака.png-6bd4e629f5e3f06c6c1a255b7abb937c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_picture/сено.png"
-dest_files=["res://.godot/imported/сено.png-b6945e15ac12b9cdb4598d358e306dc0.ctex"]
+source_file="res://KCards/images/bg_picture/дальние облака.png"
+dest_files=["res://.godot/imported/дальние облака.png-6bd4e629f5e3f06c6c1a255b7abb937c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3byikvq8iwcw"
-path="res://.godot/imported/облако 1.png-145b8c2deb7745d5129f256b54469a2d.ctex"
+uid="uid://dtdnl2r0llkms"
+path="res://.godot/imported/основной фон.png-87254eb2cc87140f9e1f87d20a547b56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background_picture/облако 1.png"
-dest_files=["res://.godot/imported/облако 1.png-145b8c2deb7745d5129f256b54469a2d.ctex"]
+source_file="res://KCards/images/bg_picture/основной фон.png"
+dest_files=["res://.godot/imported/основной фон.png-87254eb2cc87140f9e1f87d20a547b56.ctex"]
 
 [params]
 
