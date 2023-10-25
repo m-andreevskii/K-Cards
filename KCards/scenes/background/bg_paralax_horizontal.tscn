@@ -1,5 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ndvst867wrl8"]
 
+[ext_resource type="Texture2D" uid="uid://dyhrli5modyqk" path="res://KCards/images/bg_picture/дальние облака.png" id="1_m1mjy"]
+[ext_resource type="Texture2D" uid="uid://c2xmfgtiygb4c" path="res://KCards/images/bg_picture/облака.png" id="2_574pf"]
+
 [sub_resource type="GDScript" id="GDScript_dccw5"]
 script/source = "extends ParallaxBackground
 
@@ -15,10 +18,6 @@ func _process(delta):
 	scroll_offset.x -= speed * delta
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bweo2"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wm0d3"]
-
 [node name="BGParalaxHorizontal" type="ParallaxBackground"]
 script = SubResource("GDScript_dccw5")
 
@@ -28,7 +27,7 @@ motion_mirroring = Vector2(650, 0)
 
 [node name="ДальниеОблака" type="Sprite2D" parent="ParallaxLayer2"]
 position = Vector2(339, 167)
-texture = SubResource("CompressedTexture2D_bweo2")
+texture = ExtResource("1_m1mjy")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 1)
@@ -36,4 +35,4 @@ motion_mirroring = Vector2(650, 0)
 
 [node name="Облака" type="Sprite2D" parent="ParallaxLayer4"]
 position = Vector2(335, 215)
-texture = SubResource("CompressedTexture2D_wm0d3")
+texture = ExtResource("2_574pf")

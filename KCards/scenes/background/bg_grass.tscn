@@ -1,5 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://duwaswjotw0tf"]
 
+[ext_resource type="Texture2D" uid="uid://bq0f3rcuui6bk" path="res://KCards/images/bg_picture/сено.png" id="1_el81g"]
+
 [sub_resource type="Animation" id="Animation_0xdet"]
 length = 0.001
 tracks/0/type = "value"
@@ -38,9 +40,6 @@ _data = {
 "grass_animation": SubResource("Animation_h0hwu")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vb21v"]
-load_path = "res://.godot/imported/сено.png-b6945e15ac12b9cdb4598d358e306dc0.ctex"
-
 [node name="BackgroundGrass" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -52,5 +51,5 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(360, 238)
 scale = Vector2(1.12344, 1.00625)
-texture = SubResource("CompressedTexture2D_vb21v")
+texture = ExtResource("1_el81g")
 hframes = 10

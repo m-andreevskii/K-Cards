@@ -1,13 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwm7bghxxnumd"]
 
 [ext_resource type="Texture2D" uid="uid://df8wjj71st2s7" path="res://KCards/images/bg_picture/звезды.png" id="1_3ksor"]
+[ext_resource type="Texture2D" uid="uid://dmvejgt2ybdd5" path="res://KCards/images/bg_picture/основной фон 2.png" id="1_ejr36"]
 [ext_resource type="Texture2D" uid="uid://fojtxprtip82" path="res://KCards/images/bg_picture/луна.png" id="2_k7bt3"]
 [ext_resource type="Script" path="res://KCards/scenes/background/BGParalaxClouds.gd" id="3_p3h5j"]
 [ext_resource type="Texture2D" uid="uid://d3byikvq8iwcw" path="res://KCards/images/bg_picture/облако 1.png" id="4_lpsuk"]
 [ext_resource type="Texture2D" uid="uid://b4lufhap6wl8m" path="res://KCards/images/bg_picture/облако2.png" id="5_et6ak"]
 [ext_resource type="Texture2D" uid="uid://dyhrli5modyqk" path="res://KCards/images/bg_picture/дальние облака.png" id="6_tmcpl"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_07pnh"]
 
 [node name="bg_welcome_window" type="Node2D"]
 
@@ -17,7 +16,7 @@ layer = -10
 [node name="Небо" type="Sprite2D" parent="Layer"]
 position = Vector2(361, 535)
 scale = Vector2(1.12266, 1.12266)
-texture = SubResource("CompressedTexture2D_07pnh")
+texture = ExtResource("1_ejr36")
 
 [node name="Звезды" type="Sprite2D" parent="Layer/Небо"]
 position = Vector2(-1.33614, -46.3185)
