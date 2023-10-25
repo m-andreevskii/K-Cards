@@ -8,4 +8,18 @@ func _ready():
 
 
 func _on_back_mode_button_pressed():
+	MenuAudio.buttonPressedSound()
 	get_tree().change_scene_to_file("res://KCards/scenes/menu/mode_menu.tscn")
+
+
+func _on_editing_deck_button_pressed():
+	MenuAudio.buttonPressedSound()
+	
+
+
+func _on_easy_mode_button_pressed():
+	MenuAudio.buttonPressedSound()
+
+
+func _on_normal_mode_button_pressed():
+	MenuAudio.buttonPressedSound()

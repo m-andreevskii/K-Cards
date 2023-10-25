@@ -16,10 +16,8 @@ func _process(delta):
 "
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bweo2"]
-load_path = "res://.godot/imported/дальние облака.png-bb5df97ba3883309fb0cbdc0ffc9c3f3.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wm0d3"]
-load_path = "res://.godot/imported/облака.png-ee6c96e7c680302c74cf384c01502a40.ctex"
 
 [node name="BGParalaxHorizontal" type="ParallaxBackground"]
 script = SubResource("GDScript_dccw5")

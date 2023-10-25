@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://gin8ym3srci0"]
-
-[ext_resource type="AudioStream" uid="uid://d3wsf2argq41o" path="res://KCards/music/Menu_theme_v01.mp3" id="1_nsyep"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_nsyep")
-autoplay = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dwm7bghxxnumd" path="res://KCards/scenes/background/bg_welcome_window.tscn" id="1_rl6nb"]
 [ext_resource type="Script" path="res://KCards/scenes/welcome_window.gd" id="1_v4x5u"]
-[ext_resource type="AudioStream" uid="uid://d3wsf2argq41o" path="res://KCards/music/Menu_theme_v01.mp3" id="3_gpwan"]
+[ext_resource type="AudioStream" path="res://KCards/music/Menu_theme_v01.mp3" id="3_gpwan"]
 
 [node name="welcome_window" type="Node2D"]
 script = ExtResource("1_v4x5u")
@@ -20,6 +20,5 @@ text = "Play"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gpwan")
-autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

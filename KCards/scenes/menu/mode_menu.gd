@@ -8,8 +8,10 @@ func _ready():
 
 
 func _on_back_button_pressed():
+	MenuAudio.buttonPressedSound()
 	get_tree().change_scene_to_file("res://KCards/scenes/menu/main_menu.tscn")
 
 
 func _on_offline_mode_button_pressed():
+	MenuAudio.buttonPressedSound()
 	get_tree().change_scene_to_file("res://KCards/scenes/menu/difficulty_mode_menu.tscn")

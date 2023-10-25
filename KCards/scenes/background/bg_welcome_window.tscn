@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dyhrli5modyqk" path="res://KCards/images/bg_picture/дальние облака.png" id="6_tmcpl"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_07pnh"]
-load_path = "res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"
 
 [node name="bg_welcome_window" type="Node2D"]
 

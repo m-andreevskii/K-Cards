@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ndvst867wrl8" path="res://KCards/scenes/background/bg_paralax_horizontal.tscn" id="3_603vi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_48v10"]
-load_path = "res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"
 
 [node name="MainBackground" type="Node2D"]
 
