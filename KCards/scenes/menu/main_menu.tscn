@@ -1,93 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://n3wcx86ku1vb"]
+[gd_scene load_steps=4 format=3 uid="uid://n3wcx86ku1vb"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/main_menu.gd" id="1_iidp2"]
-[ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="2_cf04t"]
-[ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="3_p0knw"]
-[ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="4_8xia8"]
 [ext_resource type="PackedScene" uid="uid://lwvm5pmyvvli" path="res://KCards/scenes/background/bg_main.tscn" id="5_f4u7k"]
 [ext_resource type="PackedScene" uid="uid://0mdjnjd1kus3" path="res://KCards/scenes/menu/settings_button.tscn" id="6_0ol4c"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_iidp2")
 
-[node name="ButtonsLayer" type="CanvasLayer" parent="."]
-layer = -8
-
-[node name="FirstButton" type="Button" parent="ButtonsLayer"]
-offset_left = 233.0
-offset_top = -322.0
-offset_right = 458.0
-offset_bottom = -252.0
-theme_override_font_sizes/font_size = 35
-text = "Играть
-"
-
-[node name="CampaignButton" type="TextureButton" parent="ButtonsLayer"]
-offset_left = 67.0
-offset_top = 97.0
-offset_right = 277.0
-offset_bottom = 167.0
-disabled = true
-texture_normal = ExtResource("2_cf04t")
-texture_disabled = ExtResource("3_p0knw")
-
-[node name="Label" type="Label" parent="ButtonsLayer/CampaignButton"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 13.0
-offset_right = 178.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 28
-text = "Кампания"
-horizontal_alignment = 1
-
-[node name="BattlesButton" type="TextureButton" parent="ButtonsLayer"]
-offset_left = 67.0
-offset_top = 189.0
-offset_right = 277.0
-offset_bottom = 259.0
-texture_normal = ExtResource("2_cf04t")
-texture_pressed = ExtResource("4_8xia8")
-texture_disabled = ExtResource("3_p0knw")
-
-[node name="Label" type="Label" parent="ButtonsLayer/BattlesButton"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 13.0
-offset_right = 180.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 27
-text = "Сражения
-"
-horizontal_alignment = 1
-
-[node name="ExitButton" type="TextureButton" parent="ButtonsLayer"]
-offset_left = 66.0
-offset_top = 277.0
-offset_right = 276.0
-offset_bottom = 347.0
-texture_normal = ExtResource("2_cf04t")
-texture_pressed = ExtResource("4_8xia8")
-texture_disabled = ExtResource("3_p0knw")
-
-[node name="Label" type="Label" parent="ButtonsLayer/ExitButton"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 13.0
-offset_right = 182.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 28
-text = "Выход"
-horizontal_alignment = 1
-
 [node name="MainBackground" parent="." instance=ExtResource("5_f4u7k")]
 position = Vector2(79, 433)
 
 [node name="SettingsButton" parent="." instance=ExtResource("6_0ol4c")]
 position = Vector2(4, -2)
-
-[connection signal="pressed" from="ButtonsLayer/BattlesButton" to="." method="_on_battles_button_pressed"]
-[connection signal="pressed" from="ButtonsLayer/ExitButton" to="." method="_on_exit_button_pressed"]

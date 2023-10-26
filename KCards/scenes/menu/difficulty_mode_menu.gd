@@ -11,13 +11,7 @@ func _on_back_mode_button_pressed():
 	MenuAudio.buttonPressedSound()
 	#get_tree().change_scene_to_file("res://KCards/scenes/menu/mode_menu.tscn")
 	
-	get_node("BackModeButton").queue_free()
-	get_node("EasyModeButton").queue_free()
-	get_node("NormalModeButton").queue_free()
-	get_node("EditingDeckButton").queue_free()
-	
-	var battleMenuButton = preload("res://KCards/scenes/menu/mode_menu.tscn")
-	add_child(battleMenuButton.instantiate())
+	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/mode_menu.tscn")
 	
 
 

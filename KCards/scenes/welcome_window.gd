@@ -8,3 +8,5 @@ func _ready():
 
 func _on_button_pressed():
 	SceneTransition.change_scene("res://KCards/scenes/menu/main_menu.tscn")
+
+
