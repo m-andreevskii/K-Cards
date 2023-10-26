@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0rmcmw8a4ke3"]
+[gd_scene load_steps=5 format=3 uid="uid://c0rmcmw8a4ke3"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/difficulty_mode_menu.gd" id="1_dga8j"]
 [ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="2_y2xm6"]
 [ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="3_m3mep"]
 [ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="4_qxwse"]
-[ext_resource type="PackedScene" uid="uid://lwvm5pmyvvli" path="res://KCards/scenes/background/bg_main.tscn" id="5_mmbtt"]
-[ext_resource type="PackedScene" uid="uid://0mdjnjd1kus3" path="res://KCards/scenes/menu/settings_button.tscn" id="6_vt56d"]
 
 [node name="difficulty_mode_menu" type="Node2D"]
 script = ExtResource("1_dga8j")
@@ -92,10 +90,7 @@ text = "Назад
 "
 horizontal_alignment = 1
 
-[node name="MainBackground" parent="." instance=ExtResource("5_mmbtt")]
-position = Vector2(179, 444)
-
-[node name="SettingsButton" parent="." instance=ExtResource("6_vt56d")]
-position = Vector2(1, -2)
-
+[connection signal="pressed" from="EasyModeButton" to="." method="_on_easy_mode_button_pressed"]
+[connection signal="pressed" from="NormalModeButton" to="." method="_on_normal_mode_button_pressed"]
+[connection signal="pressed" from="EditingDeckButton" to="." method="_on_editing_deck_button_pressed"]
 [connection signal="pressed" from="BackModeButton" to="." method="_on_back_mode_button_pressed"]

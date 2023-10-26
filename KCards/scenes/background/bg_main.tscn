@@ -1,11 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://lwvm5pmyvvli"]
 
+[ext_resource type="Texture2D" uid="uid://dtdnl2r0llkms" path="res://KCards/images/bg_picture/основной фон.png" id="1_chfwu"]
 [ext_resource type="PackedScene" uid="uid://duwaswjotw0tf" path="res://KCards/scenes/background/bg_grass.tscn" id="1_cw4oa"]
 [ext_resource type="Script" path="res://KCards/scenes/background/bg_grass.gd" id="2_adu7s"]
 [ext_resource type="PackedScene" uid="uid://ndvst867wrl8" path="res://KCards/scenes/background/bg_paralax_horizontal.tscn" id="3_603vi"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_48v10"]
-load_path = "res://.godot/imported/основной фон.png-2c074304e2526b005beafa4b57fe75b5.ctex"
 
 [node name="MainBackground" type="Node2D"]
 
@@ -15,7 +13,7 @@ layer = -10
 [node name="Sprite2D" type="Sprite2D" parent="HomeLayer"]
 position = Vector2(360, -58)
 scale = Vector2(1.12266, 1.12266)
-texture = SubResource("CompressedTexture2D_48v10")
+texture = ExtResource("1_chfwu")
 
 [node name="GrassLayer2" type="CanvasLayer" parent="."]
 layer = -9
