@@ -38,27 +38,6 @@ theme_override_font_sizes/font_size = 28
 text = "Кампания"
 horizontal_alignment = 1
 
-[node name="BattlesButton" type="TextureButton" parent="."]
-offset_left = 67.0
-offset_top = 189.0
-offset_right = 277.0
-offset_bottom = 259.0
-texture_normal = ExtResource("2_wtrn0")
-texture_pressed = ExtResource("4_34gkm")
-texture_disabled = ExtResource("3_cx16g")
-
-[node name="Label" type="Label" parent="BattlesButton"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 13.0
-offset_right = 180.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 27
-text = "Сражения
-"
-horizontal_alignment = 1
-
 [node name="ExitButton" type="TextureButton" parent="."]
 offset_left = 66.0
 offset_top = 277.0
@@ -79,5 +58,26 @@ theme_override_font_sizes/font_size = 28
 text = "Выход"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="BattlesButton" to="." method="_on_battles_button_pressed"]
+[node name="BattlesButton" type="TextureButton" parent="ExitButton"]
+offset_left = 1.0
+offset_top = -88.0
+offset_right = 211.0
+offset_bottom = -18.0
+texture_normal = ExtResource("2_wtrn0")
+texture_pressed = ExtResource("4_34gkm")
+texture_disabled = ExtResource("3_cx16g")
+
+[node name="Label" type="Label" parent="ExitButton/BattlesButton"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 13.0
+offset_right = 180.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Сражения
+"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ExitButton/BattlesButton" to="." method="_on_battles_button_pressed"]

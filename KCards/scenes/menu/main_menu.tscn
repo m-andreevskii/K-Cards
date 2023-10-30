@@ -11,4 +11,3 @@ script = ExtResource("1_iidp2")
 position = Vector2(79, 433)
 
 [node name="SettingsButton" parent="." instance=ExtResource("6_0ol4c")]
-position = Vector2(4, -2)
