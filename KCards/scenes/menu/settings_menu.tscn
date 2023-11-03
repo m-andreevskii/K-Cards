@@ -8,22 +8,31 @@
 
 [node name="settings_menu" type="Node2D"]
 
-[node name="SoundScrollBar" type="HSlider" parent="."]
-offset_left = 109.0
-offset_top = 168.0
-offset_right = 235.0
-offset_bottom = 176.0
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 64.0
+offset_top = 122.0
+offset_right = 274.0
+offset_bottom = 192.0
+texture = ExtResource("1_8o7qf")
+
+[node name="SoundScrollBar" type="HSlider" parent="TextureRect"]
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 166.0
+offset_bottom = 51.0
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_4tlfu")
 bus_name = "Master"
 
-[node name="Label" type="Label" parent="SoundScrollBar"]
+[node name="Label" type="Label" parent="TextureRect/SoundScrollBar"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -64.0
-offset_right = 88.0
-offset_bottom = -38.0
+offset_left = 21.0
+offset_top = -24.0
+offset_right = 112.0
+offset_bottom = 3.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
 text = "Громкость"
 
 [node name="Buttons" type="Node2D" parent="."]
@@ -69,6 +78,6 @@ theme_override_font_sizes/font_size = 27
 text = "Назад"
 horizontal_alignment = 1
 
-[connection signal="value_changed" from="SoundScrollBar" to="SoundScrollBar" method="_on_value_changed"]
+[connection signal="value_changed" from="TextureRect/SoundScrollBar" to="TextureRect/SoundScrollBar" method="_on_value_changed"]
 [connection signal="pressed" from="Buttons/FullScreenButton" to="Buttons" method="_on_fullscreen_button_pressed"]
 [connection signal="pressed" from="Buttons/BackButton" to="Buttons" method="_on_back_button_pressed"]
