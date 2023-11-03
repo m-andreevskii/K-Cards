@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://depxiqhix7hn2"]
+[gd_scene load_steps=5 format=3 uid="uid://depxiqhix7hn2"]
 
 [ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="1_8o7qf"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/settings_menu.gd" id="1_kio4i"]
 [ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="2_gm0nc"]
 [ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="3_yq3fg"]
 
 [node name="settings_menu" type="Node2D"]
+script = ExtResource("1_kio4i")
 
 [node name="SoundScrollBar" type="HScrollBar" parent="."]
 offset_left = 109.0
@@ -59,3 +61,5 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
 text = "Назад"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="FullScreenButton" to="." method="_on_fullscreen_button_pressed"]
