@@ -24,6 +24,7 @@ MenuAudio="*res://KCards/scenes/audio/menu_audio.tscn"
 
 window/size/viewport_width=720
 window/size/viewport_height=480
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

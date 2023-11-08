@@ -16,3 +16,15 @@ func _process(delta):
 func buttonPressedSound() -> void:
 	$ButtonPressedSound.play()
 	
+
+func changeBackgroundMusic(newMusic: String) -> void:
+	for audioStream in self.get_children():
+		audioStream.stop()
+		
+		
+	match newMusic:
+		"deckBuilding":
+			$DeckBuildingBackgroundMusic.play()
+			
+		"menu":
+			$MenuBackGroundMusic.play()
