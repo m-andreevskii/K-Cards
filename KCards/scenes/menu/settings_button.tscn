@@ -25,33 +25,26 @@ texture_normal = ExtResource("1_mltkk")
 texture_pressed = ExtResource("2_gqgtm")
 
 [node name="SettingsPopup" type="Popup" parent="."]
+transparent_bg = true
 initial_position = 1
 size = Vector2i(448, 280)
+transparent = true
 theme = SubResource("Theme_aaexw")
 script = ExtResource("4_vcqyq")
 
-[node name="Node2D" type="Control" parent="SettingsPopup"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 636.0
-offset_bottom = 396.0
-
-[node name="Sprite2D" type="Sprite2D" parent="SettingsPopup/Node2D"]
-position = Vector2(-4, -4)
+[node name="Sprite2D" type="Sprite2D" parent="SettingsPopup"]
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_sq8ak")
 centered = false
 
-[node name="TextureRect" type="TextureRect" parent="SettingsPopup/Node2D/Sprite2D"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 214.0
-offset_bottom = 96.0
+[node name="TextureRect" type="TextureRect" parent="SettingsPopup/Sprite2D"]
+offset_left = 334.286
+offset_top = 101.429
+offset_right = 544.286
+offset_bottom = 193.429
 texture = ExtResource("6_o42hi")
 
-[node name="SoundScrollBar" type="HSlider" parent="SettingsPopup/Node2D/Sprite2D/TextureRect"]
+[node name="SoundScrollBar" type="HSlider" parent="SettingsPopup/Sprite2D/TextureRect"]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 35.0
@@ -62,7 +55,7 @@ step = 0.001
 script = ExtResource("7_3cdvo")
 bus_name = "Master"
 
-[node name="Label" type="Label" parent="SettingsPopup/Node2D/Sprite2D/TextureRect/SoundScrollBar"]
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/TextureRect/SoundScrollBar"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = -24.0
@@ -72,19 +65,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 17
 text = "Громкость"
 
-[node name="Buttons" type="Node2D" parent="SettingsPopup/Node2D/Sprite2D"]
+[node name="Buttons" type="Node2D" parent="SettingsPopup/Sprite2D"]
+position = Vector2(140, -15.7143)
 script = ExtResource("8_wjf5q")
 
-[node name="FullScreenButton" type="TextureButton" parent="SettingsPopup/Node2D/Sprite2D/Buttons"]
-offset_left = 67.0
-offset_top = 207.0
-offset_right = 277.0
-offset_bottom = 277.0
+[node name="FullScreenButton" type="TextureButton" parent="SettingsPopup/Sprite2D/Buttons"]
+offset_left = -45.7143
+offset_top = 125.714
+offset_right = 164.286
+offset_bottom = 195.714
 texture_normal = ExtResource("6_o42hi")
 texture_pressed = ExtResource("9_mnuuc")
 texture_disabled = ExtResource("10_l2prj")
 
-[node name="Label" type="Label" parent="SettingsPopup/Node2D/Sprite2D/Buttons/FullScreenButton"]
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/Buttons/FullScreenButton"]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 18.0
@@ -95,16 +89,16 @@ theme_override_font_sizes/font_size = 23
 text = "На весь экран"
 horizontal_alignment = 1
 
-[node name="BackButton" type="TextureButton" parent="SettingsPopup/Node2D/Sprite2D/Buttons"]
-offset_left = 64.0
-offset_top = 298.0
-offset_right = 274.0
-offset_bottom = 368.0
+[node name="BackButton" type="TextureButton" parent="SettingsPopup/Sprite2D/Buttons"]
+offset_left = 78.5714
+offset_top = 247.143
+offset_right = 288.571
+offset_bottom = 317.143
 texture_normal = ExtResource("6_o42hi")
 texture_pressed = ExtResource("9_mnuuc")
 texture_disabled = ExtResource("10_l2prj")
 
-[node name="Label" type="Label" parent="SettingsPopup/Node2D/Sprite2D/Buttons/BackButton"]
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/Buttons/BackButton"]
 layout_mode = 0
 offset_left = 36.0
 offset_top = 14.0
@@ -117,7 +111,7 @@ horizontal_alignment = 1
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="SettingsPopup" method="_on_settings_button_pressed"]
-[connection signal="value_changed" from="SettingsPopup/Node2D/Sprite2D/TextureRect/SoundScrollBar" to="SettingsPopup/Node2D/Sprite2D/TextureRect/SoundScrollBar" method="_on_value_changed"]
-[connection signal="pressed" from="SettingsPopup/Node2D/Sprite2D/Buttons/FullScreenButton" to="SettingsPopup/Node2D/Sprite2D/Buttons" method="_on_fullscreen_button_pressed"]
-[connection signal="pressed" from="SettingsPopup/Node2D/Sprite2D/Buttons/BackButton" to="SettingsPopup/Node2D/Sprite2D/Buttons" method="_on_back_button_pressed"]
-[connection signal="pressed" from="SettingsPopup/Node2D/Sprite2D/Buttons/BackButton" to="SettingsPopup" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="SettingsPopup/Sprite2D/TextureRect/SoundScrollBar" to="SettingsPopup/Sprite2D/TextureRect/SoundScrollBar" method="_on_value_changed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/Buttons/FullScreenButton" to="SettingsPopup/Sprite2D/Buttons" method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/Buttons/BackButton" to="SettingsPopup" method="_on_back_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/Buttons/BackButton" to="SettingsPopup/Sprite2D/Buttons" method="_on_back_button_pressed"]
