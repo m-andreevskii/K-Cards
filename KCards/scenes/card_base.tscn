@@ -1,0 +1,181 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbo1knxpvu7t1"]
+
+[ext_resource type="Script" path="res://KCards/cards/card_base.gd" id="1_i13g8"]
+[ext_resource type="Texture2D" uid="uid://cpqg55nr6rty" path="res://KCards/images/card/assets/card_background.png" id="2_1umjh"]
+[ext_resource type="Texture2D" uid="uid://cva2vbbjb62yh" path="res://KCards/images/card/assets/cost.svg" id="3_2q1l5"]
+[ext_resource type="Texture2D" uid="uid://dk4s6c4tmy4vv" path="res://KCards/images/card/assets/nameBackground.png" id="4_cw30y"]
+[ext_resource type="Texture2D" uid="uid://dnkdaij3wakdx" path="res://KCards/images/card/assets/card_desc_background.png" id="5_sc8n4"]
+[ext_resource type="Texture2D" uid="uid://tkekjyprsvlp" path="res://KCards/images/card/assets/attack.svg" id="6_htoxt"]
+[ext_resource type="Texture2D" uid="uid://cspmrk1tdrs7u" path="res://KCards/images/card/assets/hp.svg" id="7_xehyb"]
+
+[node name="CardBase" type="MarginContainer"]
+custom_minimum_size = Vector2(255, 350)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = -175.0
+offset_right = 127.5
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i13g8")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(130, 176)
+texture = ExtResource("2_1umjh")
+
+[node name="Bars" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="Bars"]
+layout_mode = 2
+
+[node name="LeftGap" type="MarginContainer" parent="Bars/TopBar"]
+custom_minimum_size = Vector2(209, 0)
+layout_mode = 2
+
+[node name="Cost" type="MarginContainer" parent="Bars/TopBar"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Bars/TopBar/Cost"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/TopBar/Cost"]
+layout_mode = 2
+
+[node name="costBackground" type="Sprite2D" parent="Bars/TopBar/Cost/CenterContainer"]
+position = Vector2(23, 24)
+scale = Vector2(0.255952, 0.234043)
+texture = ExtResource("3_2q1l5")
+
+[node name="Cost" type="Label" parent="Bars/TopBar/Cost/CenterContainer/costBackground"]
+offset_left = -76.0
+offset_top = -98.0
+offset_right = 84.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 50
+text = "Cost"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MidGap" type="MarginContainer" parent="Bars"]
+custom_minimum_size = Vector2(255, 100)
+layout_mode = 2
+
+[node name="Image" type="Sprite2D" parent="Bars"]
+position = Vector2(127.5, 75)
+
+[node name="Name" type="MarginContainer" parent="Bars"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Bars/Name"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/Name"]
+layout_mode = 2
+
+[node name="nameBackground" type="Sprite2D" parent="Bars/Name/CenterContainer"]
+position = Vector2(131, 45)
+scale = Vector2(0.725, 1.15)
+texture = ExtResource("4_cw30y")
+
+[node name="Name" type="Label" parent="Bars/Name/CenterContainer/nameBackground"]
+offset_left = -181.0
+offset_top = -18.0
+offset_right = 177.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 23
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="MarginContainer" parent="Bars"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Bars/Description"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/Description"]
+layout_mode = 2
+
+[node name="descrBackground" type="Sprite2D" parent="Bars/Description/CenterContainer"]
+position = Vector2(130, 152.5)
+scale = Vector2(0.838816, 0.822115)
+texture = ExtResource("5_sc8n4")
+
+[node name="Description" type="Label" parent="Bars/Description/CenterContainer/descrBackground"]
+offset_left = -142.0
+offset_top = -95.0
+offset_right = 144.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 23
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LowerGap" type="MarginContainer" parent="Bars"]
+custom_minimum_size = Vector2(255, 185)
+layout_mode = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="Bars"]
+layout_mode = 2
+
+[node name="Attack" type="MarginContainer" parent="Bars/BottomBar"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Bars/BottomBar/Attack"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/BottomBar/Attack"]
+layout_mode = 2
+
+[node name="attackBackground" type="Sprite2D" parent="Bars/BottomBar/Attack/CenterContainer"]
+position = Vector2(23, 24)
+scale = Vector2(0.255952, 0.234043)
+texture = ExtResource("6_htoxt")
+
+[node name="Attack" type="Label" parent="Bars/BottomBar/Attack/CenterContainer/attackBackground"]
+offset_left = -76.0
+offset_top = -98.0
+offset_right = 84.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 50
+text = "Cost"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LeftGap" type="MarginContainer" parent="Bars/BottomBar"]
+custom_minimum_size = Vector2(209, 0)
+layout_mode = 2
+
+[node name="Health" type="MarginContainer" parent="Bars/BottomBar"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Bars/BottomBar/Health"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Bars/BottomBar/Health"]
+layout_mode = 2
+
+[node name="healthBackground" type="Sprite2D" parent="Bars/BottomBar/Health/CenterContainer"]
+position = Vector2(20, 23)
+scale = Vector2(0.255952, 0.234043)
+texture = ExtResource("7_xehyb")
+
+[node name="Health" type="Label" parent="Bars/BottomBar/Health/CenterContainer/healthBackground"]
+offset_left = -76.0
+offset_top = -98.0
+offset_right = 84.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 50
+text = "Cost"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
