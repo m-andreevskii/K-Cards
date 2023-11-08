@@ -14,6 +14,7 @@ func _process(delta):
 func _on_confirm_button_pressed():
 	MenuAudio.buttonPressedSound()
 	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/difficulty_mode_menu.tscn")
+	MenuAudio.changeBackgroundMusic("menu")
 
 
 func _on_left_button_pressed():

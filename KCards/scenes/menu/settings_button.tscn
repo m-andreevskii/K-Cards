@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://0mdjnjd1kus3"]
+[gd_scene load_steps=12 format=3 uid="uid://0mdjnjd1kus3"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/settings_button.gd" id="1_dhobf"]
 [ext_resource type="Texture2D" uid="uid://b8xvvfja0afjn" path="res://KCards/images/bg_buttons_picture/k-shest.png" id="1_mltkk"]
 [ext_resource type="Texture2D" uid="uid://n6gxsq4kgvyu" path="res://KCards/images/bg_buttons_picture/k-shest-temn.png" id="2_gqgtm"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/hello_world_Popup.gd" id="4_vcqyq"]
+[ext_resource type="Texture2D" uid="uid://bftykyese3swo" path="res://KCards/images/bg_buttons_picture/settings_window.png" id="5_sq8ak"]
+[ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="6_o42hi"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/settings_volume.gd" id="7_3cdvo"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/settings_menu.gd" id="8_wjf5q"]
+[ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="9_mnuuc"]
+[ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="10_l2prj"]
+
+[sub_resource type="Theme" id="Theme_aaexw"]
 
 [node name="SettingsButton0" type="CanvasLayer"]
 script = ExtResource("1_dhobf")
@@ -15,4 +24,100 @@ offset_bottom = 77.0
 texture_normal = ExtResource("1_mltkk")
 texture_pressed = ExtResource("2_gqgtm")
 
+[node name="SettingsPopup" type="Popup" parent="."]
+initial_position = 1
+size = Vector2i(448, 280)
+theme = SubResource("Theme_aaexw")
+script = ExtResource("4_vcqyq")
+
+[node name="Node2D" type="Control" parent="SettingsPopup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 396.0
+
+[node name="Sprite2D" type="Sprite2D" parent="SettingsPopup/Node2D"]
+position = Vector2(-4, -4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_sq8ak")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPopup/Node2D/Sprite2D"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 214.0
+offset_bottom = 96.0
+texture = ExtResource("6_o42hi")
+
+[node name="SoundScrollBar" type="HSlider" parent="SettingsPopup/Node2D/Sprite2D/TextureRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 166.0
+offset_bottom = 51.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("7_3cdvo")
+bus_name = "Master"
+
+[node name="Label" type="Label" parent="SettingsPopup/Node2D/Sprite2D/TextureRect/SoundScrollBar"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -24.0
+offset_right = 112.0
+offset_bottom = 3.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+text = "Громкость"
+
+[node name="Buttons" type="Node2D" parent="SettingsPopup/Node2D/Sprite2D"]
+script = ExtResource("8_wjf5q")
+
+[node name="FullScreenButton" type="TextureButton" parent="SettingsPopup/Node2D/Sprite2D/Buttons"]
+offset_left = 67.0
+offset_top = 207.0
+offset_right = 277.0
+offset_bottom = 277.0
+texture_normal = ExtResource("6_o42hi")
+texture_pressed = ExtResource("9_mnuuc")
+texture_disabled = ExtResource("10_l2prj")
+
+[node name="Label" type="Label" parent="SettingsPopup/Node2D/Sprite2D/Buttons/FullScreenButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 18.0
+offset_right = 200.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "На весь экран"
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="SettingsPopup/Node2D/Sprite2D/Buttons"]
+offset_left = 64.0
+offset_top = 298.0
+offset_right = 274.0
+offset_bottom = 368.0
+texture_normal = ExtResource("6_o42hi")
+texture_pressed = ExtResource("9_mnuuc")
+texture_disabled = ExtResource("10_l2prj")
+
+[node name="Label" type="Label" parent="SettingsPopup/Node2D/Sprite2D/Buttons/BackButton"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Назад"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="SettingsPopup" method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="SettingsPopup/Node2D/Sprite2D/TextureRect/SoundScrollBar" to="SettingsPopup/Node2D/Sprite2D/TextureRect/SoundScrollBar" method="_on_value_changed"]
+[connection signal="pressed" from="SettingsPopup/Node2D/Sprite2D/Buttons/FullScreenButton" to="SettingsPopup/Node2D/Sprite2D/Buttons" method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Node2D/Sprite2D/Buttons/BackButton" to="SettingsPopup/Node2D/Sprite2D/Buttons" method="_on_back_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Node2D/Sprite2D/Buttons/BackButton" to="SettingsPopup" method="_on_back_button_pressed"]

@@ -19,3 +19,5 @@ func _on_offline_mode_button_pressed():
 	#get_tree().change_scene_to_file("res://KCards/scenes/menu/difficulty_mode_menu.tscn")
 	
 	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/difficulty_mode_menu.tscn")
+	
+

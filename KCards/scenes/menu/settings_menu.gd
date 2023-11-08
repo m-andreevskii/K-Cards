@@ -21,4 +21,8 @@ func _on_back_button_pressed():
 	#TODO add backing to previous scene
 	MenuAudio.buttonPressedSound()
 #	get_tree().change_scene_to_file("res://KCards/scenes/menu/mode_menu.tscn")
-	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/main_menu.tscn")
+
+
+	#SceneTransition.change_buttons(self,"res://KCards/scenes/menu/main_menu.tscn")
+	
+	
