@@ -1,72 +1,137 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcr7ngow11bqq"]
+[gd_scene load_steps=16 format=3 uid="uid://dcr7ngow11bqq"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/EditDeck.gd" id="1_jrukb"]
-[ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="2_7vdcj"]
-[ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="3_1n6mv"]
-[ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="4_ed55p"]
-[ext_resource type="Texture2D" uid="uid://2jtrjvrp66rg" path="res://KCards/images/bg_buttons_picture/arrow.png" id="5_vqjac"]
-[ext_resource type="Texture2D" uid="uid://brs5u8coai31b" path="res://KCards/images/bg_buttons_picture/arrowDark.png" id="6_dapli"]
+[ext_resource type="Texture2D" uid="uid://ca3hi28tm1xly" path="res://KCards/images/editDeck/background.png" id="2_ylvoy"]
+[ext_resource type="Texture2D" uid="uid://bjqc1rwo25vd5" path="res://KCards/images/editDeck/confirm.png" id="3_fvs0m"]
+[ext_resource type="Texture2D" uid="uid://uarw0pt1dxc" path="res://KCards/images/editDeck/fire.png" id="3_mmgks"]
+[ext_resource type="Texture2D" uid="uid://c2w1rwjfqvlkl" path="res://KCards/images/editDeck/arrowLeftDark.png" id="5_80y76"]
+[ext_resource type="Texture2D" uid="uid://cmru247ob76v4" path="res://KCards/images/editDeck/arrowLeft.png" id="7_cl5jb"]
+[ext_resource type="Texture2D" uid="uid://ccgq3565gc3sm" path="res://KCards/images/editDeck/arrowRightDark.png" id="7_d2stb"]
+[ext_resource type="Texture2D" uid="uid://c86gpudsymum" path="res://KCards/images/editDeck/arrowRight.png" id="8_fsgqj"]
+[ext_resource type="Texture2D" uid="uid://vur4ds5ciy7r" path="res://KCards/images/editDeck/filter.png" id="9_77pkf"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ybphk"]
-font_size = 22
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkrox"]
+atlas = ExtResource("3_mmgks")
+region = Rect2(0, 0, 720, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foutc"]
+atlas = ExtResource("3_mmgks")
+region = Rect2(720, 0, 720, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uicds"]
+atlas = ExtResource("3_mmgks")
+region = Rect2(1440, 0, 720, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ufq4"]
+atlas = ExtResource("3_mmgks")
+region = Rect2(2160, 0, 720, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p736k"]
+atlas = ExtResource("3_mmgks")
+region = Rect2(2880, 0, 720, 480)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k26rj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkrox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foutc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uicds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ufq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p736k")
+}],
+"loop": true,
+"name": &"fireAnimation",
+"speed": 5.0
+}]
 
 [node name="ButtonsLayer2" type="CanvasLayer"]
 layer = -8
 script = ExtResource("1_jrukb")
 
-[node name="Shading" type="Polygon2D" parent="."]
-position = Vector2(105, 0)
-scale = Vector2(0.7, 1)
-color = Color(0, 0, 0, 0.541176)
-polygon = PackedVector2Array(0, 0, 720, 0, 720, 480, 0, 480)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(360, 240)
+texture = ExtResource("2_ylvoy")
 
 [node name="ConfirmButton" type="TextureButton" parent="."]
-offset_left = 396.0
-offset_top = 7.0
-offset_right = 606.0
-offset_bottom = 77.0
-texture_normal = ExtResource("2_7vdcj")
-texture_pressed = ExtResource("4_ed55p")
-texture_disabled = ExtResource("3_1n6mv")
-
-[node name="Label" type="Label" parent="ConfirmButton"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 15.0
-offset_right = 200.0
-offset_bottom = 57.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 28
-text = "Подтвердить"
-label_settings = SubResource("LabelSettings_ybphk")
-horizontal_alignment = 1
+offset_left = 475.0
+offset_top = -39.0
+offset_right = 605.0
+offset_bottom = 44.0
+texture_normal = ExtResource("3_fvs0m")
 
 [node name="LeftButton" type="TextureButton" parent="."]
 offset_left = 8.0
 offset_top = 208.0
-offset_right = 98.0
-offset_bottom = 273.0
-texture_normal = ExtResource("5_vqjac")
-texture_pressed = ExtResource("6_dapli")
+offset_right = 68.0
+offset_bottom = 248.0
+texture_normal = ExtResource("7_cl5jb")
+texture_pressed = ExtResource("5_80y76")
 
 [node name="RightButton" type="TextureButton" parent="."]
-offset_left = 621.0
+offset_left = 653.0
 offset_top = 207.0
-offset_right = 711.0
-offset_bottom = 272.0
-texture_normal = ExtResource("5_vqjac")
-texture_pressed = ExtResource("6_dapli")
-flip_h = true
+offset_right = 713.0
+offset_bottom = 247.0
+texture_normal = ExtResource("8_fsgqj")
+texture_pressed = ExtResource("7_d2stb")
 
-[node name="LineEdit" type="LineEdit" parent="."]
-offset_left = 117.0
-offset_top = 12.0
-offset_right = 363.0
-offset_bottom = 43.0
-placeholder_text = "Поиск..."
+[node name="FireAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(360, 240)
+sprite_frames = SubResource("SpriteFrames_k26rj")
+animation = &"fireAnimation"
+autoplay = "fireAnimation"
+
+[node name="Filter1" type="TextureButton" parent="."]
+offset_left = 15.0
+offset_top = 307.0
+offset_right = 100.0
+offset_bottom = 335.0
+texture_normal = ExtResource("9_77pkf")
+
+[node name="Filter2" type="TextureButton" parent="."]
+offset_left = 15.0
+offset_top = 347.0
+offset_right = 100.0
+offset_bottom = 375.0
+texture_normal = ExtResource("9_77pkf")
+
+[node name="Filter3" type="TextureButton" parent="."]
+offset_left = 15.0
+offset_top = 387.0
+offset_right = 100.0
+offset_bottom = 415.0
+texture_normal = ExtResource("9_77pkf")
+
+[node name="Filter4" type="TextureButton" parent="."]
+offset_left = 625.0
+offset_top = 347.0
+offset_right = 710.0
+offset_bottom = 375.0
+texture_normal = ExtResource("9_77pkf")
+
+[node name="Filter5" type="TextureButton" parent="."]
+offset_left = 625.0
+offset_top = 307.0
+offset_right = 710.0
+offset_bottom = 335.0
+texture_normal = ExtResource("9_77pkf")
+
+[node name="Filter6" type="TextureButton" parent="."]
+offset_left = 625.0
+offset_top = 387.0
+offset_right = 710.0
+offset_bottom = 415.0
+texture_normal = ExtResource("9_77pkf")
 
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
