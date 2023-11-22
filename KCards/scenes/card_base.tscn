@@ -2,180 +2,185 @@
 
 [ext_resource type="Script" path="res://KCards/cards/card_base.gd" id="1_i13g8"]
 [ext_resource type="Texture2D" uid="uid://cpqg55nr6rty" path="res://KCards/images/card/assets/card_background.png" id="2_1umjh"]
-[ext_resource type="Texture2D" uid="uid://cva2vbbjb62yh" path="res://KCards/images/card/assets/cost.svg" id="3_2q1l5"]
+[ext_resource type="Texture2D" uid="uid://b8ddq782puiod" path="res://KCards/images/card/assets/cost.png" id="3_f4qwd"]
 [ext_resource type="Texture2D" uid="uid://dk4s6c4tmy4vv" path="res://KCards/images/card/assets/nameBackground.png" id="4_cw30y"]
 [ext_resource type="Texture2D" uid="uid://dnkdaij3wakdx" path="res://KCards/images/card/assets/card_desc_background.png" id="5_sc8n4"]
-[ext_resource type="Texture2D" uid="uid://tkekjyprsvlp" path="res://KCards/images/card/assets/attack.svg" id="6_htoxt"]
-[ext_resource type="Texture2D" uid="uid://cspmrk1tdrs7u" path="res://KCards/images/card/assets/hp.svg" id="7_xehyb"]
+[ext_resource type="Texture2D" uid="uid://b2t2uy2u2t7ps" path="res://KCards/images/card/assets/attack.png" id="6_ev1k0"]
+[ext_resource type="Texture2D" uid="uid://cgc8jyiyuoncy" path="res://KCards/images/card/assets/hp.png" id="7_6akod"]
 
-[node name="CardBase" type="MarginContainer"]
-custom_minimum_size = Vector2(255, 350)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.5
-offset_top = -175.0
-offset_right = 127.5
-offset_bottom = 175.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CardBase" type="Node2D"]
 script = ExtResource("1_i13g8")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Button" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(255, 350)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 265.0
+offset_bottom = 360.0
+
+[node name="Background" type="Sprite2D" parent="Button"]
 position = Vector2(130, 176)
 texture = ExtResource("2_1umjh")
 
-[node name="Bars" type="VBoxContainer" parent="."]
+[node name="Bars" type="VBoxContainer" parent="Button"]
+offset_right = 255.0
+offset_bottom = 350.0
+
+[node name="TopBar" type="HBoxContainer" parent="Button/Bars"]
 layout_mode = 2
 
-[node name="TopBar" type="HBoxContainer" parent="Bars"]
-layout_mode = 2
-
-[node name="LeftGap" type="MarginContainer" parent="Bars/TopBar"]
+[node name="LeftGap" type="MarginContainer" parent="Button/Bars/TopBar"]
 custom_minimum_size = Vector2(209, 0)
 layout_mode = 2
 
-[node name="Cost" type="MarginContainer" parent="Bars/TopBar"]
+[node name="Cost" type="MarginContainer" parent="Button/Bars/TopBar"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Bars/TopBar/Cost"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Button/Bars/TopBar/Cost"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Bars/TopBar/Cost"]
+[node name="CenterContainer" type="CenterContainer" parent="Button/Bars/TopBar/Cost"]
 layout_mode = 2
 
-[node name="costBackground" type="Sprite2D" parent="Bars/TopBar/Cost/CenterContainer"]
+[node name="costBackground" type="Sprite2D" parent="Button/Bars/TopBar/Cost/CenterContainer"]
 position = Vector2(23, 24)
-scale = Vector2(0.255952, 0.234043)
-texture = ExtResource("3_2q1l5")
+scale = Vector2(1.094, 1)
+texture = ExtResource("3_f4qwd")
 
-[node name="Cost" type="Label" parent="Bars/TopBar/Cost/CenterContainer/costBackground"]
-offset_left = -76.0
-offset_top = -98.0
-offset_right = 84.0
-offset_bottom = 85.0
-theme_override_font_sizes/font_size = 50
+[node name="Cost" type="Label" parent="Button/Bars/TopBar/Cost/CenterContainer/costBackground"]
+offset_left = -30.6216
+offset_top = -25.0
+offset_right = 31.3784
+offset_bottom = 13.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Cost"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="MidGap" type="MarginContainer" parent="Bars"]
+[node name="MidGap" type="MarginContainer" parent="Button/Bars"]
 custom_minimum_size = Vector2(255, 100)
 layout_mode = 2
 
-[node name="Image" type="Sprite2D" parent="Bars"]
-position = Vector2(127.5, 75)
+[node name="Image" type="Sprite2D" parent="Button/Bars"]
+position = Vector2(127.5, 175)
 
-[node name="Name" type="MarginContainer" parent="Bars"]
+[node name="Name" type="MarginContainer" parent="Button/Bars"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Bars/Name"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Button/Bars/Name"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Bars/Name"]
+[node name="CenterContainer" type="CenterContainer" parent="Button/Bars/Name"]
 layout_mode = 2
 
-[node name="nameBackground" type="Sprite2D" parent="Bars/Name/CenterContainer"]
-position = Vector2(131, 45)
-scale = Vector2(0.725, 1.15)
+[node name="nameBackground" type="Sprite2D" parent="Button/Bars/Name/CenterContainer"]
+position = Vector2(131.5, 63)
+scale = Vector2(0.725, 0.95)
 texture = ExtResource("4_cw30y")
 
-[node name="Name" type="Label" parent="Bars/Name/CenterContainer/nameBackground"]
+[node name="Name" type="Label" parent="Button/Bars/Name/CenterContainer/nameBackground"]
 offset_left = -181.0
 offset_top = -18.0
 offset_right = 177.0
 offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.423529, 0.411765, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.952941, 0.952941, 0.952941, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Description" type="MarginContainer" parent="Bars"]
+[node name="Description" type="MarginContainer" parent="Button/Bars"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Bars/Description"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Button/Bars/Description"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Bars/Description"]
+[node name="CenterContainer" type="CenterContainer" parent="Button/Bars/Description"]
 layout_mode = 2
 
-[node name="descrBackground" type="Sprite2D" parent="Bars/Description/CenterContainer"]
-position = Vector2(130, 152.5)
-scale = Vector2(0.838816, 0.822115)
+[node name="descrBackground" type="Sprite2D" parent="Button/Bars/Description/CenterContainer"]
+position = Vector2(128.5, 162)
+scale = Vector2(0.718815, 0.567675)
 texture = ExtResource("5_sc8n4")
 
-[node name="Description" type="Label" parent="Bars/Description/CenterContainer/descrBackground"]
+[node name="Description" type="Label" parent="Button/Bars/Description/CenterContainer/descrBackground"]
 offset_left = -142.0
 offset_top = -95.0
 offset_right = 144.0
 offset_bottom = 94.0
-theme_override_font_sizes/font_size = 23
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "Description"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="LowerGap" type="MarginContainer" parent="Bars"]
+[node name="LowerGap" type="MarginContainer" parent="Button/Bars"]
 custom_minimum_size = Vector2(255, 185)
 layout_mode = 2
 
-[node name="BottomBar" type="HBoxContainer" parent="Bars"]
+[node name="BottomBar" type="HBoxContainer" parent="Button/Bars"]
 layout_mode = 2
 
-[node name="Attack" type="MarginContainer" parent="Bars/BottomBar"]
+[node name="Attack" type="MarginContainer" parent="Button/Bars/BottomBar"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Bars/BottomBar/Attack"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Button/Bars/BottomBar/Attack"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Bars/BottomBar/Attack"]
+[node name="CenterContainer" type="CenterContainer" parent="Button/Bars/BottomBar/Attack"]
 layout_mode = 2
 
-[node name="attackBackground" type="Sprite2D" parent="Bars/BottomBar/Attack/CenterContainer"]
-position = Vector2(23, 24)
-scale = Vector2(0.255952, 0.234043)
-texture = ExtResource("6_htoxt")
+[node name="attackBackground" type="Sprite2D" parent="Button/Bars/BottomBar/Attack/CenterContainer"]
+position = Vector2(21.5, 27)
+scale = Vector2(1.094, 1)
+texture = ExtResource("6_ev1k0")
 
-[node name="Attack" type="Label" parent="Bars/BottomBar/Attack/CenterContainer/attackBackground"]
-offset_left = -76.0
-offset_top = -98.0
-offset_right = 84.0
-offset_bottom = 85.0
-theme_override_font_sizes/font_size = 50
+[node name="Attack" type="Label" parent="Button/Bars/BottomBar/Attack/CenterContainer/attackBackground"]
+offset_left = -80.8958
+offset_top = -95.0
+offset_right = 79.1042
+offset_bottom = 88.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Attack"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="LeftGap" type="MarginContainer" parent="Bars/BottomBar"]
+[node name="LeftGap" type="MarginContainer" parent="Button/Bars/BottomBar"]
 custom_minimum_size = Vector2(209, 0)
 layout_mode = 2
 
-[node name="Health" type="MarginContainer" parent="Bars/BottomBar"]
+[node name="Health" type="MarginContainer" parent="Button/Bars/BottomBar"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Bars/BottomBar/Health"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Button/Bars/BottomBar/Health"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="Bars/BottomBar/Health"]
+[node name="CenterContainer" type="CenterContainer" parent="Button/Bars/BottomBar/Health"]
 layout_mode = 2
 
-[node name="healthBackground" type="Sprite2D" parent="Bars/BottomBar/Health/CenterContainer"]
+[node name="healthBackground" type="Sprite2D" parent="Button/Bars/BottomBar/Health/CenterContainer"]
 position = Vector2(20, 23)
-scale = Vector2(0.255952, 0.234043)
-texture = ExtResource("7_xehyb")
+scale = Vector2(0.9, 0.823)
+texture = ExtResource("7_6akod")
 
-[node name="Health" type="Label" parent="Bars/BottomBar/Health/CenterContainer/healthBackground"]
-offset_left = -76.0
-offset_top = -98.0
-offset_right = 84.0
-offset_bottom = 85.0
-theme_override_font_sizes/font_size = 50
+[node name="Health" type="Label" parent="Button/Bars/BottomBar/Health/CenterContainer/healthBackground"]
+offset_left = -42.7778
+offset_top = -19.4411
+offset_right = 39.2222
+offset_bottom = 18.5589
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
 text = "Health"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

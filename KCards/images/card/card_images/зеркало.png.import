@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2gfcqyct7348"
-path="res://.godot/imported/scarecrew.png-721c7b705ef950776aecb6063593a1d3.ctex"
+uid="uid://do8lyxrfowtqx"
+path="res://.godot/imported/зеркало.png-7d298bab1fdac7a09808c41abbca386b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://KCards/images/card/card_images/scarecrew.png"
-dest_files=["res://.godot/imported/scarecrew.png-721c7b705ef950776aecb6063593a1d3.ctex"]
+source_file="res://KCards/images/card/card_images/зеркало.png"
+dest_files=["res://.godot/imported/зеркало.png-7d298bab1fdac7a09808c41abbca386b.ctex"]
 
 [params]
 

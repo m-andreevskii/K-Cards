@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wilv8jb5drvp"
-path="res://.godot/imported/background.png-4de5ffc54f061fc04f5ef541addc5104.ctex"
+uid="uid://btljiao3ar2om"
+path="res://.godot/imported/пугало.png-9027b71f418a37330556033791eef467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://KCards/images/card/assets/background.png"
-dest_files=["res://.godot/imported/background.png-4de5ffc54f061fc04f5ef541addc5104.ctex"]
+source_file="res://KCards/images/card/card_images/пугало.png"
+dest_files=["res://.godot/imported/пугало.png-9027b71f418a37330556033791eef467.ctex"]
 
 [params]
 
