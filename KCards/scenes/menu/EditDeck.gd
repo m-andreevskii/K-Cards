@@ -1,15 +1,28 @@
 extends CanvasLayer
 var Card = preload("res://KCards/scenes/card_base.tscn")
 
+
+var offsetX = 125
+var offsetY = 146
+var scale1 = 0.34
+var startingPosX = 125
+var startingPosY = 50
+
+var rowsNum1 = 2
+var collumnsNum1 = 4
+var rowsNum2 = 2		# for player's deck
+var collumnsNum2 = 10	# for player's deck
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# function loads 8 cards on the screen...
 	var visibleCard = null
-	for i in range(0, 2):
-		for j in range(0, 4):
-			print(i, "/", j)
+	for i in range(0, rowsNum1):
+		for j in range(0, collumnsNum1):
+			#print(i, "/", j)
 			visibleCard = Card.instantiate()
 			add_child(visibleCard)
-			visibleCard.display_card(125+j*125,50+i*146, 0.34, 4*i+j)
+			visibleCard.display_card(startingPosX+j*offsetX, startingPosY+i*offsetY, scale1, collumnsNum1*i+j)
 	#card.display_card()
 	
 	
@@ -29,7 +42,7 @@ func _on_confirm_button_pressed():
 
 func _on_left_button_pressed():
 	MenuAudio.buttonPressedSound()
-	var displayCards = CardDisplay.new()
+
 
 
 func _on_right_button_pressed():
