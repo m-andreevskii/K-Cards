@@ -1,23 +1,31 @@
 extends Node2D
 
-@onready 
-var CardsDatabase = preload("res://KCards/cards/CardsDatabase.gd")
-@onready
-var myCardsDatabase = CardsDatabase.new()
+class_name CardDisplay
+#@onready 
+#var CardsDatabase = preload("res://KCards/cards/CardsDatabase.gd")
+#@onready
+#var myCardsDatabase = CardsDatabase.new()
 @onready
 var Cardname = $Bars/Name/CenterContainer/nameBackground/Name
 @onready 
 var CardImage
 
 var index = 0
-
+var scaler = 0
+var x = 0
+var y = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	display_card()
 	pass
 	
-func display_card():
+func display_card(x: int, y: int, scaler: float, index: int):
+	self.position = Vector2(x,y)
+	self.x = x
+	self.y = y
+	self.scaler = scaler 
+	var myCardsDatabase = CardsDatabase.new()
 	var CardInfo = myCardsDatabase.DATA[index]
+	self.scale = Vector2(scaler, scaler)
 	
 	var CardSize = $Button.size
 	var type = CardInfo[1]
@@ -56,6 +64,7 @@ func _process(delta):
 func _on_button_pressed():
 	index+= 1
 	if index >= 9:
-		get_tree().quit()
-	display_card()
+		#get_tree().quit()
+		index = 0
+	display_card(x,y, scaler,index)
 	

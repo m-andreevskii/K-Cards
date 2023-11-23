@@ -23,6 +23,7 @@ position = Vector2(130, 176)
 texture = ExtResource("2_1umjh")
 
 [node name="Bars" type="VBoxContainer" parent="Button"]
+layout_mode = 0
 offset_right = 255.0
 offset_bottom = 350.0
 

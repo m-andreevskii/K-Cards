@@ -1,5 +1,7 @@
 # Unit info = [Id, Type, Cost, Name, Describe Text, Image, Attack, Health]
 # Ability info = [Id, Type, Cost, Name, Describe Text, Image]
+extends Node
+class_name CardsDatabase
 
 enum {Scarecrow, Torch, Bird, Sock, Camp, Shovel, Oak, Bucket, Drum, Mirror}
 
@@ -25,3 +27,10 @@ const DATA = {
 	Mirror:
 		[10, "Units", 2, "Ручное зеркало", "Снижает урон, получаемый соседними картами на 2, снижает свое hp на 1", "зеркало.png", 0, 6]
 	}
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
