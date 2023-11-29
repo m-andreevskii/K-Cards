@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://KCards/scenes/scene_transition.tscn"
 MenuAudio="*res://KCards/scenes/audio/menu_audio.tscn"
+DeckManager="*res://KCards/cards/DeckManager.gd"
+CardsDatabase="*res://KCards/cards/CardsDatabase.gd"
 
 [display]
 

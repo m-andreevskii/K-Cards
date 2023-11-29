@@ -16,18 +16,20 @@ var x = 0
 var y = 0
 var Description
 var default_z_index = self.z_index
+var mouseLeftPressedCallback
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 	
-func display_card(x: int, y: int, scaler: float, index: int):
+func display_card(x: int, y: int, scaler: float, index: int, mouseLeftPressedCallback: Callable):
 	self.position = Vector2(x,y)
 	self.x = x
 	self.y = y
 	self.scaler = scaler 
-	var myCardsDatabase = CardsDatabase.new()
-	var CardInfo = myCardsDatabase.DATA[index]
+	self.index = index
+	var CardInfo = CardsDatabase.DATA[index]
 	self.scale = Vector2(scaler, scaler)
+	self.mouseLeftPressedCallback = mouseLeftPressedCallback
 	
 	var CardSize = $Button.size
 	var type = CardInfo[1]
@@ -74,13 +76,7 @@ func _on_button_gui_input(event):
 		if event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					# when the left mouse button is pressed, the next card is shown (NEEDS TO BE CHANGED 
-					# INTO ADDING A CARD IN PLAYER'S DECK :( )
-					index+= 1
-					if index >= 9:
-						#get_tree().quit()
-						index = 0
-					display_card(x,y, scaler,index)
+					mouseLeftPressedCallback.call(index)
 				MOUSE_BUTTON_RIGHT:	
 					# while right mouse button is pressed, the card's scale is to twice as big as default
 					self.scale = Vector2(scaler*2, scaler*2)

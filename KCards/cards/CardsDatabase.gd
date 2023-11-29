@@ -1,7 +1,6 @@
 # Unit info = [Id, Type, Cost, Name, Describe Text, Image, Attack, Health]
 # Ability info = [Id, Type, Cost, Name, Describe Text, Image]
 extends Node
-class_name CardsDatabase
 
 enum {Scarecrow, Torch, Bird, Sock, Camp, Shovel, Oak, Bucket, Drum, Mirror}
 
