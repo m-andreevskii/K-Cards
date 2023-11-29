@@ -100,10 +100,12 @@ func removeDeck():
 
 
 func onCardSelected(index: int):
+	MenuAudio.buttonPressedSound()
 	DeckManager.addCard(index)
 	displayDeck()
 
 
 func onCardRemoved(index: int):
+	MenuAudio.buttonPressedSound()
 	DeckManager.removeCard(index)
 	displayDeck()
