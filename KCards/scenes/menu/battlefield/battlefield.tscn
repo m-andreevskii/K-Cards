@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwu7fa6vlh3fd"]
+
+[ext_resource type="Texture2D" uid="uid://bjnjhc5yx1ctq" path="res://KCards/images/battlefield/background1.png" id="1_nripy"]
+[ext_resource type="PackedScene" uid="uid://c7hwflxfrgqd6" path="res://KCards/scenes/menu/battlefield/settings_button.tscn" id="2_vlcb8"]
+
+[node name="battlefield" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(360, 240)
+texture = ExtResource("1_nripy")
+
+[node name="SettingsButton0" parent="." instance=ExtResource("2_vlcb8")]
+visible = false

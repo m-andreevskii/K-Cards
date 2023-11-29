@@ -1,0 +1,141 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7hwflxfrgqd6"]
+
+[ext_resource type="Script" path="res://KCards/scenes/menu/settings_button.gd" id="1_5a8y8"]
+[ext_resource type="Texture2D" uid="uid://b8xvvfja0afjn" path="res://KCards/images/bg_buttons_picture/k-shest.png" id="2_qub0f"]
+[ext_resource type="Texture2D" uid="uid://n6gxsq4kgvyu" path="res://KCards/images/bg_buttons_picture/k-shest-temn.png" id="3_3go68"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/hello_world_Popup.gd" id="4_16fxy"]
+[ext_resource type="Texture2D" uid="uid://bftykyese3swo" path="res://KCards/images/bg_buttons_picture/settings_window.png" id="5_c8s8u"]
+[ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="6_ic4jp"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/settings_volume.gd" id="7_aw25k"]
+[ext_resource type="Script" path="res://KCards/scenes/menu/settings_menu.gd" id="8_f0u1l"]
+[ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="9_v4kya"]
+[ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="10_x1kav"]
+
+[sub_resource type="Theme" id="Theme_aaexw"]
+
+[node name="SettingsButton0" type="CanvasLayer"]
+script = ExtResource("1_5a8y8")
+
+[node name="SettingsButton" type="TextureButton" parent="."]
+offset_left = 618.0
+offset_top = 12.0
+offset_right = 708.0
+offset_bottom = 77.0
+texture_normal = ExtResource("2_qub0f")
+texture_pressed = ExtResource("3_3go68")
+
+[node name="SettingsPopup" type="Popup" parent="."]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(448, 280)
+visible = true
+transparent = true
+theme = SubResource("Theme_aaexw")
+script = ExtResource("4_16fxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="SettingsPopup"]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_c8s8u")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="SettingsPopup/Sprite2D"]
+offset_left = 334.286
+offset_top = 101.429
+offset_right = 544.286
+offset_bottom = 193.429
+texture = ExtResource("6_ic4jp")
+
+[node name="SoundScrollBar" type="HSlider" parent="SettingsPopup/Sprite2D/TextureRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 166.0
+offset_bottom = 51.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("7_aw25k")
+bus_name = "Master"
+
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/TextureRect/SoundScrollBar"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -24.0
+offset_right = 112.0
+offset_bottom = 3.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+text = "Громкость"
+
+[node name="Buttons" type="Node2D" parent="SettingsPopup/Sprite2D/TextureRect"]
+position = Vector2(-194.286, -117.143)
+scale = Vector2(1, 1)
+script = ExtResource("8_f0u1l")
+
+[node name="SurrenderButton" type="TextureButton" parent="SettingsPopup/Sprite2D/TextureRect/Buttons"]
+offset_left = -45.7143
+offset_top = 237.143
+offset_right = 164.286
+offset_bottom = 307.143
+texture_normal = ExtResource("6_ic4jp")
+texture_pressed = ExtResource("9_v4kya")
+texture_disabled = ExtResource("10_x1kav")
+
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/TextureRect/Buttons/SurrenderButton"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Сдаться"
+horizontal_alignment = 1
+
+[node name="FullScreenButton" type="TextureButton" parent="SettingsPopup/Sprite2D/TextureRect/Buttons"]
+offset_left = -45.7143
+offset_top = 125.714
+offset_right = 164.286
+offset_bottom = 195.714
+texture_normal = ExtResource("6_ic4jp")
+texture_pressed = ExtResource("9_v4kya")
+texture_disabled = ExtResource("10_x1kav")
+
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/TextureRect/Buttons/FullScreenButton"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 18.0
+offset_right = 200.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "На весь экран"
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="SettingsPopup/Sprite2D/TextureRect/Buttons"]
+offset_left = 195.714
+offset_top = 241.429
+offset_right = 405.714
+offset_bottom = 311.429
+texture_normal = ExtResource("6_ic4jp")
+texture_pressed = ExtResource("9_v4kya")
+texture_disabled = ExtResource("10_x1kav")
+
+[node name="Label" type="Label" parent="SettingsPopup/Sprite2D/TextureRect/Buttons/BackButton"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 14.0
+offset_right = 171.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "Назад"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="SettingsPopup" method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="SettingsPopup/Sprite2D/TextureRect/SoundScrollBar" to="SettingsPopup/Sprite2D/TextureRect/SoundScrollBar" method="_on_value_changed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/TextureRect/Buttons/SurrenderButton" to="SettingsPopup" method="_on_back_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/TextureRect/Buttons/SurrenderButton" to="SettingsPopup/Sprite2D/TextureRect/Buttons" method="_on_back_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/TextureRect/Buttons/FullScreenButton" to="SettingsPopup/Sprite2D/TextureRect/Buttons" method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/TextureRect/Buttons/BackButton" to="SettingsPopup" method="_on_back_button_pressed"]
+[connection signal="pressed" from="SettingsPopup/Sprite2D/TextureRect/Buttons/BackButton" to="SettingsPopup/Sprite2D/TextureRect/Buttons" method="_on_back_button_pressed"]
