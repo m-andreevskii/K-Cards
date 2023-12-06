@@ -28,3 +28,6 @@ func changeBackgroundMusic(newMusic: String) -> void:
 			
 		"menu":
 			$MenuBackGroundMusic.play()
+			
+		"battle":
+			$BattleBackgroundMusic.play()
