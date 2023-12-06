@@ -1,13 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwu7fa6vlh3fd"]
+[gd_scene load_steps=7 format=3 uid="uid://cwu7fa6vlh3fd"]
 
 [ext_resource type="Texture2D" uid="uid://bjnjhc5yx1ctq" path="res://KCards/images/battlefield/background1.png" id="1_nripy"]
 [ext_resource type="PackedScene" uid="uid://c7hwflxfrgqd6" path="res://KCards/scenes/menu/battlefield/settings_button.tscn" id="2_vlcb8"]
+[ext_resource type="Texture2D" uid="uid://dsi35xxns5k4l" path="res://KCards/images/battlefield/mana5.png" id="3_6xqd5"]
+[ext_resource type="Texture2D" uid="uid://dmrmixvidvicd" path="res://KCards/images/battlefield/my-card-deck.png" id="4_v5jh7"]
+[ext_resource type="Texture2D" uid="uid://cqnl3wm55v5nb" path="res://KCards/images/battlefield/field.png" id="5_0u8hq"]
+[ext_resource type="Texture2D" uid="uid://d0qh1xpqdan04" path="res://KCards/images/battlefield/enemy.png" id="6_5yj3l"]
 
 [node name="battlefield" type="CanvasLayer"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SettingsButton0" parent="." instance=ExtResource("2_vlcb8")]
+
+[node name="Mana0" type="Sprite2D" parent="."]
+position = Vector2(26, 433)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana1" type="Sprite2D" parent="."]
+position = Vector2(26, 372)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana2" type="Sprite2D" parent="."]
+position = Vector2(27, 309)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana3" type="Sprite2D" parent="."]
+position = Vector2(25, 247)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana4" type="Sprite2D" parent="."]
+position = Vector2(26, 188)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana5" type="Sprite2D" parent="."]
+position = Vector2(27, 127)
+texture = ExtResource("3_6xqd5")
+
+[node name="CardDesk" type="Sprite2D" parent="."]
+position = Vector2(354, 443)
+scale = Vector2(0.288, 0.288)
+texture = ExtResource("4_v5jh7")
+
+[node name="Field" type="Sprite2D" parent="."]
+position = Vector2(344, 253)
+scale = Vector2(0.841667, 0.841667)
+texture = ExtResource("5_0u8hq")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(353, 55)
+scale = Vector2(0.68125, 0.68125)
+texture = ExtResource("6_5yj3l")
+
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(360, 240)
 texture = ExtResource("1_nripy")
-
-[node name="SettingsButton0" parent="." instance=ExtResource("2_vlcb8")]
-visible = false

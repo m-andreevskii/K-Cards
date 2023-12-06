@@ -23,7 +23,7 @@ func _on_editing_deck_button_pressed():
 
 func _on_easy_mode_button_pressed():
 	MenuAudio.buttonPressedSound()
-	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/battlefield.tscn")
+	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/battlefield/battlefield.tscn")
 	#TODO add transition
 
 

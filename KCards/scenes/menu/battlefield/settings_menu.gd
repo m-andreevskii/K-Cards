@@ -25,6 +25,7 @@ func _on_back_button_pressed():
 
 	#SceneTransition.change_buttons(self,"res://KCards/scenes/menu/main_menu.tscn")
 	
-	
 func _on_surrender_button_pressed():
 	pass
+
+
