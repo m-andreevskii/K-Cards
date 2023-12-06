@@ -58,6 +58,7 @@ layer = -8
 script = ExtResource("1_jrukb")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(360, 240)
 texture = ExtResource("2_ylvoy")
 
