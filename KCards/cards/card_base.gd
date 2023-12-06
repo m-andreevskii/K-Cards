@@ -6,7 +6,7 @@ class_name CardDisplay
 #@onready
 #var myCardsDatabase = CardsDatabase.new()
 @onready
-var Cardname = $Bars/Name/CenterContainer/nameBackground/Name
+var Cardname = $Button/Bars/Name/CenterContainer/nameBackground/Name
 @onready 
 var CardImage
 
@@ -79,8 +79,14 @@ func _on_button_gui_input(event):
 					mouseLeftPressedCallback.call(index)
 				MOUSE_BUTTON_RIGHT:	
 					# while right mouse button is pressed, the card's scale is to twice as big as default
-					self.scale = Vector2(scaler*2, scaler*2)
-					self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+					if scaler == 0.34:
+						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+						$AnimationPlayer.play("Scale_Grow")
+						self.scale = Vector2(scaler*2, scaler*2)
+					if scaler == 0.12:
+						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+						$AnimationPlayer2.play("Scale_Grow_small")
+						self.scale = Vector2(scaler*2, scaler*2)
 						
 		# if mouse button isn't pressed down
 		else:
@@ -89,7 +95,15 @@ func _on_button_gui_input(event):
 					pass
 				MOUSE_BUTTON_RIGHT:	
 					# when right mouse button is released, card's scale is set to default value
-					self.scale = Vector2(scaler, scaler)
-					self.z_index = default_z_index
+					if scaler == 0.34:
+						$AnimationPlayer.play_backwards("Scale_Grow")
+						await $AnimationPlayer.animation_finished
+						self.scale = Vector2(scaler, scaler)
+						self.z_index = default_z_index
+					if scaler == 0.12:
+						$AnimationPlayer2.play_backwards("Scale_Grow_small")
+						await $AnimationPlayer2.animation_finished
+						self.scale = Vector2(scaler, scaler)
+						self.z_index = default_z_index
 	
 

@@ -17,6 +17,7 @@ position = Vector2(360, 240)
 texture = ExtResource("1_nripy")
 
 [node name="SettingsButton0" parent="." instance=ExtResource("2_vlcb8")]
+layer = 2
 
 [node name="Mana0" type="Sprite2D" parent="."]
 position = Vector2(26, 433)

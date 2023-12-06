@@ -23,7 +23,7 @@ func _on_editing_deck_button_pressed():
 
 func _on_easy_mode_button_pressed():
 	MenuAudio.buttonPressedSound()
-	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/battlefield/battlefield.tscn")
+	BlackTransition.change_buttons_dark(self,"res://KCards/scenes/menu/battlefield/battlenode.tscn")
 	#TODO add transition
 	MenuAudio.changeBackgroundMusic("battle")
 

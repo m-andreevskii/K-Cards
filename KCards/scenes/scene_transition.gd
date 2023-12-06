@@ -16,4 +16,5 @@ func change_buttons(src: Node, target: String) -> void:
 	# adding new buttons to Scene tree
 	var newButtons = load(target)
 	add_child(newButtons.instantiate())
-	
+
+

@@ -6,6 +6,7 @@
 [sub_resource type="Animation" id="Animation_x6ux7"]
 resource_name = "RESET"
 length = 0.01
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
