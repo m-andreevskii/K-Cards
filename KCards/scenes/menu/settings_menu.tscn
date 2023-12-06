@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://depxiqhix7hn2"]
+[gd_scene load_steps=6 format=3 uid="uid://byqw8q021v1dj"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/settings_volume.gd" id="1_4tlfu"]
 [ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="1_8o7qf"]
