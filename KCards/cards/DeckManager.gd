@@ -11,18 +11,23 @@ func _ready():
 
 func loadFile():
 	var file = FileAccess.open("user://" + filename, FileAccess.READ)
-	if file == null:
+	if file.get_length() == 0:
 		return
-	
 	deck.clear()
+	var str
 	while !file.eof_reached():
-		addCard(int(file.get_line()))
+		str = file.get_line()
+		if str == "END":
+			return
+		else:
+			addCard(int(str))
 
 
 func saveFile():
 	var file = FileAccess.open("user://" + filename, FileAccess.WRITE_READ)
 	for card in deck:
 		file.store_line(str(card))
+	file.store_line("END")
 
 
 func addCard(index: int):
