@@ -12,8 +12,8 @@ var CardImage
 
 var index = 0
 var scaler = 0
-var x = 0
-var y = 0
+var x = 127.5
+var y = 175
 var Description
 var default_z_index = self.z_index
 var mouseLeftPressedCallback
@@ -22,9 +22,9 @@ func _ready():
 	pass
 	
 func display_card(x: int, y: int, scaler: float, index: int, mouseLeftPressedCallback: Callable):
-	self.position = Vector2(x,y)
 	self.x = x
-	self.y = y
+	self.y = y 
+	self.position = Vector2(x,y)
 	self.scaler = scaler 
 	self.index = index
 	var CardInfo = CardsDatabase.DATA[index]
@@ -82,7 +82,7 @@ func _on_button_gui_input(event):
 					if scaler == 0.34:
 						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
 						$AnimationPlayer.play("Scale_Grow")
-						self.scale = Vector2(scaler*2, scaler*2)
+						self.scale = Vector2(scaler*1.8, scaler*1.8)
 					if scaler == 0.12:
 						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
 						$AnimationPlayer2.play("Scale_Grow_small")

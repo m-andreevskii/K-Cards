@@ -4,8 +4,8 @@ var Card = preload("res://KCards/scenes/card_base.tscn")
 var offsetX = 125
 var offsetY = 146
 var scale1 = 0.34
-var startingPosX = 125
-var startingPosY = 50
+var startingPosX = 171
+var startingPosY = 114
 
 var rowsNum1 = 2
 var collumnsNum1 = 4
@@ -15,8 +15,8 @@ var collumnsNum2 = 10	# for player's deck
 var scaleDeck = 0.12
 var offsetXDeck = 44.5
 var offsetYDeck = 51
-var startingPosXDeck = 142
-var startingPosYDeck = 338
+var startingPosXDeck = 157
+var startingPosYDeck = 357
 
 var maxPages = CardsDatabase.DATA.size() / (rowsNum1 * collumnsNum1)
 var currentPage = 0

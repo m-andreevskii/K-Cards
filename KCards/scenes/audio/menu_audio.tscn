@@ -11,6 +11,7 @@ script = ExtResource("1_n2x28")
 
 [node name="MenuBackGroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_31cn3")
+volume_db = -0.03
 autoplay = true
 
 [node name="ButtonPressedSound" type="AudioStreamPlayer" parent="."]
