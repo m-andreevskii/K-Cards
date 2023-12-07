@@ -13,8 +13,11 @@ func _process(delta):
 func _on_fullscreen_button_pressed():
 	if(DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		Config.setConfigValue("graphics", "is_fullscreen", true)
+		
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		Config.setConfigValue("graphics", "is_fullscreen", false)
 
 
 func _on_back_button_pressed():
