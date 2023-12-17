@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwu7fa6vlh3fd"]
+[gd_scene load_steps=15 format=3 uid="uid://cwu7fa6vlh3fd"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/battlefield/battlefield.gd" id="1_mjkct"]
 [ext_resource type="Texture2D" uid="uid://bjnjhc5yx1ctq" path="res://KCards/images/battlefield/background1.png" id="1_nripy"]
 [ext_resource type="PackedScene" uid="uid://c7hwflxfrgqd6" path="res://KCards/scenes/menu/battlefield/settings_button.tscn" id="2_vlcb8"]
 [ext_resource type="Texture2D" uid="uid://dsi35xxns5k4l" path="res://KCards/images/battlefield/mana5.png" id="3_6xqd5"]
-[ext_resource type="Texture2D" uid="uid://dmrmixvidvicd" path="res://KCards/images/battlefield/my-card-deck.png" id="4_v5jh7"]
 [ext_resource type="Texture2D" uid="uid://cqnl3wm55v5nb" path="res://KCards/images/battlefield/field.png" id="5_0u8hq"]
 [ext_resource type="Texture2D" uid="uid://d0qh1xpqdan04" path="res://KCards/images/battlefield/enemy.png" id="6_5yj3l"]
 [ext_resource type="Texture2D" uid="uid://dg0tttbrrlv05" path="res://KCards/images/battlefield/button-move.png" id="8_adde7"]
@@ -29,6 +28,53 @@ orbit_velocity_max = 0.0
 scale_max = 3.0
 color = Color(0.372549, 0.345098, 0, 1)
 
+[sub_resource type="Animation" id="Animation_vpvir"]
+resource_name = "Glows"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCards:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(27.8118, 0.980392, 0.968627, 0.2), Color(27.8118, 0.117647, 0.968627, 0.2)]
+}
+
+[sub_resource type="Animation" id="Animation_7gmm3"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCards:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(27.8118, 0.952941, 0.968627, 0.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xnv5b"]
+_data = {
+"Glows": SubResource("Animation_vpvir"),
+"RESET": SubResource("Animation_7gmm3")
+}
+
+[sub_resource type="Environment" id="Environment_bk166"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_strength = 0.95
+glow_blend_mode = 0
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ws3w3"]
+
 [node name="battlefield" type="CanvasLayer"]
 script = ExtResource("1_mjkct")
 
@@ -40,7 +86,7 @@ texture = ExtResource("1_nripy")
 layer = 2
 
 [node name="Mana0" type="Sprite2D" parent="."]
-position = Vector2(26, 433)
+position = Vector2(26, 64)
 texture = ExtResource("3_6xqd5")
 
 [node name="Mana1" type="Sprite2D" parent="."]
@@ -62,11 +108,6 @@ texture = ExtResource("3_6xqd5")
 [node name="Mana5" type="Sprite2D" parent="."]
 position = Vector2(27, 127)
 texture = ExtResource("3_6xqd5")
-
-[node name="CardDesk" type="Sprite2D" parent="."]
-position = Vector2(354, 443)
-scale = Vector2(0.288, 0.288)
-texture = ExtResource("4_v5jh7")
 
 [node name="Field" type="Sprite2D" parent="."]
 position = Vector2(344, 253)
@@ -108,5 +149,240 @@ process_material = SubResource("ParticleProcessMaterial_rbsaj")
 lifetime = 2.7
 speed_scale = 0.4
 randomness = 1.0
+
+[node name="PlayerCards" type="Control" parent="."]
+modulate = Color(27.8118, 0.952941, 0.968627, 0.2)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="P3" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 201.0
+offset_right = 478.0
+offset_bottom = 243.0
+rotation = 1.13446
+
+[node name="P9" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 251.0
+offset_right = 322.0
+offset_bottom = 293.0
+rotation = 1.13446
+
+[node name="P10" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 234.0
+offset_right = 284.0
+offset_bottom = 276.0
+rotation = -1.13446
+
+[node name="P4" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 284.0
+offset_right = 441.0
+offset_bottom = 326.0
+rotation = -1.13446
+
+[node name="P2" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 168.0
+offset_right = 449.0
+offset_bottom = 210.0
+rotation = 0.785398
+
+[node name="P8" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 279.0
+offset_right = 334.0
+offset_bottom = 321.0
+rotation = 0.785398
+
+[node name="P1" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 148.0
+offset_right = 406.0
+offset_bottom = 190.0
+rotation = 0.436332
+
+[node name="P7" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 302.0
+offset_right = 356.0
+offset_bottom = 344.0
+rotation = 0.436332
+
+[node name="P12" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 162.0
+offset_right = 336.0
+offset_bottom = 204.0
+rotation = -0.436332
+
+[node name="P11" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 192.0
+offset_right = 304.0
+offset_bottom = 234.0
+rotation = -0.785398
+
+[node name="P5" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 306.0
+offset_right = 419.0
+offset_bottom = 348.0
+rotation = -0.785398
+
+[node name="P6" type="ColorRect" parent="PlayerCards"]
+modulate = Color(79.88, 1, 1, 1)
+layout_mode = 0
+offset_left = 355.0
+offset_top = 317.0
+offset_right = 390.0
+offset_bottom = 359.0
+rotation = -0.436332
+
+[node name="PC" type="ColorRect" parent="PlayerCards"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 230.0
+offset_right = 370.0
+offset_bottom = 272.0
+
+[node name="CardSlotsGlow" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xnv5b")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bk166")
+camera_attributes = SubResource("CameraAttributesPhysical_ws3w3")
+
+[node name="EnemyCards" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="E6" type="ColorRect" parent="EnemyCards"]
+modulate = Color(4.15, 2.96, 5.91, 1)
+layout_mode = 0
+offset_left = 382.0
+offset_top = 364.0
+offset_right = 417.0
+offset_bottom = 406.0
+rotation = -0.436332
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E1" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 101.0
+offset_right = 436.0
+offset_bottom = 143.0
+rotation = 0.436332
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E2" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 128.0
+offset_right = 488.0
+offset_bottom = 170.0
+rotation = 0.785398
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E3" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 174.0
+offset_right = 526.0
+offset_bottom = 216.0
+rotation = 1.13446
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E9" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 281.0
+offset_right = 275.0
+offset_bottom = 323.0
+rotation = 1.13446
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E10" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 207.0
+offset_right = 236.0
+offset_bottom = 249.0
+rotation = -1.13446
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E4" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 310.0
+offset_right = 489.0
+offset_bottom = 352.0
+rotation = -1.13446
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E8" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 321.0
+offset_right = 295.0
+offset_bottom = 363.0
+rotation = 0.785398
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E7" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 350.0
+offset_right = 330.0
+offset_bottom = 392.0
+rotation = 0.436332
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E11" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 152.0
+offset_right = 263.0
+offset_bottom = 194.0
+rotation = -0.785398
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E5" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 347.0
+offset_right = 457.0
+offset_bottom = 389.0
+rotation = -0.785398
+color = Color(1, 1, 1, 0.188235)
+
+[node name="E12" type="ColorRect" parent="EnemyCards"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 114.0
+offset_right = 310.0
+offset_bottom = 156.0
+rotation = -0.436332
+color = Color(1, 1, 1, 0.188235)
 
 [connection signal="pressed" from="MoveButton" to="." method="_on_move_button_pressed"]
