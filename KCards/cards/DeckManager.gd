@@ -11,7 +11,7 @@ func _ready():
 
 func loadFile():
 	var file = FileAccess.open("user://" + filename, FileAccess.READ)
-	if file.get_length() == 0:
+	if file == null || file.get_length() == 0:
 		return
 	deck.clear()
 	var str
