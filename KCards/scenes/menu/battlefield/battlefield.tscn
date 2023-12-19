@@ -159,10 +159,10 @@ offset_bottom = 40.0
 
 [node name="P3" type="ColorRect" parent="PlayerCards"]
 layout_mode = 0
-offset_left = 443.0
-offset_top = 201.0
-offset_right = 478.0
-offset_bottom = 243.0
+offset_left = 444.0
+offset_top = 204.0
+offset_right = 479.0
+offset_bottom = 246.0
 rotation = 1.13446
 
 [node name="P9" type="ColorRect" parent="PlayerCards"]
@@ -393,3 +393,15 @@ rotation = -0.436332
 color = Color(1, 1, 1, 0.188235)
 
 [connection signal="pressed" from="MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="gui_input" from="PlayerCards/P3" to="." method="_on_p_3_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P9" to="." method="_on_p_9_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P10" to="." method="_on_p_10_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P4" to="." method="_on_p_4_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P2" to="." method="_on_p_2_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P8" to="." method="_on_p_8_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P1" to="." method="_on_p_1_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P7" to="." method="_on_p_7_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P12" to="." method="_on_p_12_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P11" to="." method="_on_p_11_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P5" to="." method="_on_p_5_gui_input"]
+[connection signal="gui_input" from="PlayerCards/P6" to="." method="_on_p_6_gui_input"]

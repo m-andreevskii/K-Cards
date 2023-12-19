@@ -17,6 +17,9 @@ var y = 175
 var Description
 var default_z_index = self.z_index
 var mouseLeftPressedCallback
+
+var isOnTable = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -67,6 +70,8 @@ func _process(delta):
 
 
 
+
+var rotationBackUp
 # This function is responsible for any input (now it is just mouse input [mouse click input]) 
 # related to cards (card scenes)
 # Эта функция отвечает за любой вход связанный с картами (в данный момент нажатие и отпускание левой и правой кнопок мыши)
@@ -76,10 +81,12 @@ func _on_button_gui_input(event):
 		if event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					mouseLeftPressedCallback.call()
+					mouseLeftPressedCallback.call(self)
 				MOUSE_BUTTON_RIGHT:	
 					# while right mouse button is pressed, the card's scale is to twice as big as default
 						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+						rotationBackUp = self.rotation
+						self.rotation = 0
 						$AnimationPlayer.play("Scale_Grow")
 						self.scale = Vector2(scaler*1.8, scaler*1.8)
 						
@@ -93,6 +100,7 @@ func _on_button_gui_input(event):
 						$AnimationPlayer.play_backwards("Scale_Grow")
 						await $AnimationPlayer.animation_finished
 						self.scale = Vector2(scaler, scaler)
+						self.rotation = rotationBackUp
 						self.position = Vector2(x, y)
 						self.z_index = default_z_index
 	

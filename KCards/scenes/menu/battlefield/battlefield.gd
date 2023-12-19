@@ -15,8 +15,19 @@ var deckAI = []
 var cellAIDeck = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 var freeCellAIDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+var selectedCard = null
+var outerCircleCardNames = []
+var innerCircleCardNames = []
+var numberOfCardsInCircle = 12
+var cardScaleOnTable = 0.14
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	outerCircleCardNames.resize(numberOfCardsInCircle)
+	outerCircleCardNames.fill("")
+	innerCircleCardNames.resize(numberOfCardsInCircle)
+	innerCircleCardNames.fill("")
+	
 	
 	var file = FileAccess.open("user://" + "deck.txt", FileAccess.READ)
 	deck.clear()
@@ -33,14 +44,18 @@ func _ready():
 	deck.shuffle()
 	playableCard = deck
 	drawCards(CardIndex,5)
-	print(playerHand)
+
 	displayHand()
 	generateAICard()
-	# Replace with function body.
+	
+	
+	
+	
+	
 func drawCards(start_of_hand: int, count: int):
 	
 	for index in range(start_of_hand, start_of_hand + count):
-		print(index)
+		
 		CardIndex = CardIndex + 1
 		playerHand.append(playableCard[index])
 		if CardIndex > MaxCardInDeck:
@@ -54,7 +69,7 @@ func displayHand():
 	for i in playerHand:
 		var visibleCard = Card.instantiate()
 		add_child(visibleCard)
-		visibleCard.display_card(200+j*70, 440, 0.27, i, onCardAdd)
+		visibleCard.display_card(200+j*70, 440, 0.27, i, cardActions)
 		j = j + 1
 		playerHandVision.append(visibleCard)
 	j = 0
@@ -82,8 +97,164 @@ func saveFile():
 		file.store_line(str(card))
 	file.store_line("END")
 
-func onCardAdd():
-	$CardSlotsGlow.play("Glows")
+func cardActions(card):
+	#selectedCard = card.name
+	selectedCard = card
+	if (card.isOnTable):
+		print("card is on table")
+	else:
+		$CardSlotsGlow.play("Glows")
+	#selectedCard = 
+	
+	
+	
+	
+func putPlayerCardOnTable(card, slotID: int):
+	var x = 0
+	var y = 0
+	var rotation = 0
+	
+	card.scale = Vector2(cardScaleOnTable, cardScaleOnTable) 
+	playerHandVision.erase(card)
+	innerCircleCardNames[slotID] = card.name
+	print(card.x)
+	match slotID:
+		0:
+			
+			x = get_node("PlayerCards/P1").position.x + 7
+			y = get_node("PlayerCards/P1").position.y + 21
+			card.rotation = (PI/8)
+		1:
+			x = get_node("PlayerCards/P2").position.x - 3
+			y = get_node("PlayerCards/P2").position.y + 28
+			card.rotation = (PI/4)
+		2:
+			x = get_node("PlayerCards/P3").position.x - 10
+			y = get_node("PlayerCards/P3").position.y + 24
+			card.rotation = (PI/3)			
+		3:
+			print(get_node("PlayerCards/P4").position.x)
+			x = get_node("PlayerCards/P4").position.x + 30
+			y = get_node("PlayerCards/P4").position.y  - 5
+			card.rotation = (PI - PI/3) + PI
+		4:
+			x = get_node("PlayerCards/P5").position.x + 30
+			y = get_node("PlayerCards/P5").position.y + 4
+			card.rotation = (PI - PI/4) + PI
+		5:
+			x = get_node("PlayerCards/P6").position.x + 27
+			y = get_node("PlayerCards/P6").position.y + 16
+			card.rotation = (PI - PI/6) + PI
+		6:
+			x = get_node("PlayerCards/P7").position.x + 5
+			y = get_node("PlayerCards/P7").position.y + 30
+			card.rotation = (PI + PI/6) + PI			
+		7:
+			x = get_node("PlayerCards/P8").position.x - 5
+			y = get_node("PlayerCards/P8").position.y + 30
+			card.rotation = (PI + PI/4) + PI		
+		8:
+			x = get_node("PlayerCards/P9").position.x - 15
+			y = get_node("PlayerCards/P9").position.y + 27
+			card.rotation = (PI + PI/3) + PI
+		9:
+			print(get_node("PlayerCards/P9").position.x)
+			x = get_node("PlayerCards/P10").position.x + 22
+			y = get_node("PlayerCards/P10").position.y - 10
+			card.rotation = -(PI/3)
+		10:
+			x = get_node("PlayerCards/P11").position.x + 25
+			y = get_node("PlayerCards/P11").position.y + 2
+			card.rotation = -(PI/4)
+		11:
+			x = get_node("PlayerCards/P12").position.x + 25
+			y = get_node("PlayerCards/P12").position.y + 9
+			card.rotation = -(PI/8)	
+			
+	card.display_card(x, y, cardScaleOnTable, card.index, onSelectAICard)
+	print(card.x)
+	
+	
+func useCardSlot(event, slotID: int, isInnerCircle: bool):
+	if event is InputEventMouseButton:
+		
+		if event.pressed:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					print(selectedCard)
+					if (selectedCard):
+						print(" ! trying to put card on table ! ")
+						print(slotID)
+						putPlayerCardOnTable(selectedCard, slotID)
+					pass
+				MOUSE_BUTTON_RIGHT:	
+					pass
+						
+		# if mouse button isn't pressed down
+		else:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					pass
+				MOUSE_BUTTON_RIGHT:	
+					$CardSlotsGlow.play_backwards("Glows")
+					pass
+		
+	
+
+
+func _on_p_3_gui_input(event):
+	useCardSlot(event, 2, true)
+	
+
+
+func _on_p_9_gui_input(event):
+	useCardSlot(event, 8, true)
+	
+
+
+func _on_p_10_gui_input(event):
+	useCardSlot(event, 9, true)
+
+
+func _on_p_4_gui_input(event):
+	useCardSlot(event, 3, true)
+
+
+func _on_p_2_gui_input(event):
+	useCardSlot(event, 1, true)
+
+
+func _on_p_8_gui_input(event):
+	useCardSlot(event, 7, true)
+
+
+func _on_p_1_gui_input(event):
+	useCardSlot(event, 0, true)
+
+
+func _on_p_7_gui_input(event):
+	useCardSlot(event, 6, true)
+
+
+func _on_p_12_gui_input(event):
+	useCardSlot(event, 11, true)
+
+
+func _on_p_11_gui_input(event):
+	useCardSlot(event, 10, true)
+
+
+func _on_p_5_gui_input(event):
+	useCardSlot(event, 4, true)
+
+
+func _on_p_6_gui_input(event):
+	useCardSlot(event, 5, true)
+
+
+
+	
+	
 	
 # все для ИИ
 
@@ -97,6 +268,9 @@ func generateAICard():
 
 # ход ИИ
 func moveAI():
+	if (freeCellAIDeck.size() == 0):
+		return
+	
 	var rng = RandomNumberGenerator.new()
 	# выбираем из колоды ИИ карту
 	var indexCard = rng.randi_range(0, deckAI.size() - 1)
@@ -108,9 +282,14 @@ func moveAI():
 	# добавлем карту в видимые карты ИИ по индесу слота
 	var visibleCardAI = Card.instantiate()
 	add_child(visibleCardAI)
+	
+	outerCircleCardNames[indexCell] = visibleCardAI.name
 	putCardOnTable(visibleCardAI, deckAI[indexCard], indexCell)
 	# удаляем карту из доступной колоды
 	deckAI.remove_at(indexCard)
+	
+	
+	
 
 func putCardOnTable(visibleCardAI, card, indexCell):
 	var x = 0
@@ -169,6 +348,10 @@ func putCardOnTable(visibleCardAI, card, indexCell):
 	visibleCardAI.display_card(x, y, 0.14, card, onSelectAICard)
 	cellAIDeck[indexCell] = visibleCardAI 
 	
-func onSelectAICard():
+func onSelectAICard(card):
+	print(card.name)
 	return
 	
+
+
+
