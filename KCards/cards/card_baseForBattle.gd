@@ -76,7 +76,7 @@ func _on_button_gui_input(event):
 		if event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					mouseLeftPressedCallback.call()
+					mouseLeftPressedCallback.call(self.name)
 				MOUSE_BUTTON_RIGHT:	
 					# while right mouse button is pressed, the card's scale is to twice as big as default
 						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX

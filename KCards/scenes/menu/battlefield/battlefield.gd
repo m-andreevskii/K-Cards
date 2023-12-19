@@ -9,6 +9,7 @@ var passedCard = []
 var playableCard = []
 var CardIndex = 0
 var MaxCardInDeck = 19
+var SelectedCard = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -47,7 +48,7 @@ func displayHand():
 	for i in playerHand:
 		var visibleCard = Card.instantiate()
 		add_child(visibleCard)
-		visibleCard.display_card(200+j*70, 440, 0.27, i, onCardAdd)
+		visibleCard.display_card(200+j*70, 440, 0.27, i, onCardSelect)
 		j = j + 1
 		playerHandVision.append(visibleCard)
 	j = 0
@@ -73,5 +74,9 @@ func saveFile():
 		file.store_line(str(card))
 	file.store_line("END")
 
-func onCardAdd():
-	$CardSlotsGlow.play("Glows")
+func onCardSelect(CardName: String):
+	print(CardName)
+	SelectedCard = CardName
+	
+	$Table/CardSlotsGlow.play("Glows")
+	
