@@ -14,7 +14,6 @@ var MaxCardInDeck = 19
 var deckAI = []
 var cellAIDeck = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 var freeCellAIDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-#var deckAIVision = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1] # может потом на это заменить
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -86,7 +85,6 @@ func saveFile():
 func onCardAdd():
 	$CardSlotsGlow.play("Glows")
 	
-	
 # все для ИИ
 
 # генерация изначальной колоды (+ один ход, тк ИИ ходит первым)
@@ -120,61 +118,55 @@ func putCardOnTable(visibleCardAI, card, indexCell):
 	var rotation = 0
 	match indexCell:
 		0:
-			#get_node("EnemyCards/EE1").set_normal_texture("i")
 			x = get_node("EnemyCards/E1").position.x + 7
 			y = get_node("EnemyCards/E1").position.y + 21
-			#visibleCardAI.look_at(Vector2(-18,18))
-			print(x, y)
+			visibleCardAI.rotation = (PI/8)
 		1:
-			x = get_node("EnemyCards/E2").position.x - 5
-			y = get_node("EnemyCards/E2").position.y + 21
-			#visibleCardAI.look_at(Vector2(23,142))
-			print(x, y)
+			x = get_node("EnemyCards/E2").position.x - 3
+			y = get_node("EnemyCards/E2").position.y + 28
+			visibleCardAI.rotation = (PI/4)
 		2:
 			x = get_node("EnemyCards/E3").position.x - 10
 			y = get_node("EnemyCards/E3").position.y + 24
-			#visibleCardAI.look_at(Vector2(23,142))
-			print(x, y)
+			visibleCardAI.rotation = (PI/3)			
 		3:
-			x = get_node("EnemyCards/E4").position.x + 20
-			y = get_node("EnemyCards/E4").position.y - 7
-			print(x, y)
+			x = get_node("EnemyCards/E4").position.x + 30
+			y = get_node("EnemyCards/E4").position.y  - 5
+			visibleCardAI.rotation = (PI - PI/3) + PI
 		4:
-			x = get_node("EnemyCards/E5").position.x + 25
-			y = get_node("EnemyCards/E5").position.y
-			print(x, y)
+			x = get_node("EnemyCards/E5").position.x + 30
+			y = get_node("EnemyCards/E5").position.y + 4
+			visibleCardAI.rotation = (PI - PI/4) + PI
 		5:
-			x = get_node("EnemyCards/E6").position.x + 20
-			y = get_node("EnemyCards/E6").position.y + 10
-			print(x, y)
+			x = get_node("EnemyCards/E6").position.x + 27
+			y = get_node("EnemyCards/E6").position.y + 16
+			visibleCardAI.rotation = (PI - PI/6) + PI
 		6:
 			x = get_node("EnemyCards/E7").position.x + 5
-			y = get_node("EnemyCards/E7").position.y + 20
-			print(x, y)
+			y = get_node("EnemyCards/E7").position.y + 30
+			visibleCardAI.rotation = (PI + PI/6) + PI			
 		7:
-			x = get_node("EnemyCards/E8").position.x
-			y = get_node("EnemyCards/E8").position.y + 27
-			print(x, y)
+			x = get_node("EnemyCards/E8").position.x - 5
+			y = get_node("EnemyCards/E8").position.y + 30
+			visibleCardAI.rotation = (PI + PI/4) + PI		
 		8:
-			x = get_node("EnemyCards/E9").position.x - 10
-			y = get_node("EnemyCards/E9").position.y + 20
-			print(x, y)
+			x = get_node("EnemyCards/E9").position.x - 15
+			y = get_node("EnemyCards/E9").position.y + 27
+			visibleCardAI.rotation = (PI + PI/3) + PI
 		9:
-			x = get_node("EnemyCards/E10").position.x + 20
-			y = get_node("EnemyCards/E10").position.y
-			print(x, y)
+			x = get_node("EnemyCards/E10").position.x + 22
+			y = get_node("EnemyCards/E10").position.y - 10
+			visibleCardAI.rotation = -(PI/3)
 		10:
 			x = get_node("EnemyCards/E11").position.x + 25
-			y = get_node("EnemyCards/E11").position.y + 5
-			print(x, y)
+			y = get_node("EnemyCards/E11").position.y + 2
+			visibleCardAI.rotation = -(PI/4)
 		11:
-			x = get_node("EnemyCards/E12").position.x + 15
-			y = get_node("EnemyCards/E12").position.y + 10
-			print(x, y)
+			x = get_node("EnemyCards/E12").position.x + 25
+			y = get_node("EnemyCards/E12").position.y + 9
+			visibleCardAI.rotation = -(PI/8)			
 			
 	visibleCardAI.display_card(x, y, 0.14, card, onSelectAICard)
-	#visibleCardAI.rotation = rotation
-	
 	cellAIDeck[indexCell] = visibleCardAI 
 	
 func onSelectAICard():
