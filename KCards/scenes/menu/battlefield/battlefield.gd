@@ -20,6 +20,7 @@ var outerCircleCardNames = []
 var innerCircleCardNames = []
 var numberOfCardsInCircle = 12
 var cardScaleOnTable = 0.14
+var CardInfo = CardsDatabase
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -104,7 +105,7 @@ func cardActions(card):
 		print("card is on table")
 	else:
 		$CardSlotsGlow.play("Glows")
-	#selectedCard = 
+		#selectedCard = 
 	
 	
 	
@@ -116,8 +117,9 @@ func putPlayerCardOnTable(card, slotID: int):
 	
 	card.scale = Vector2(cardScaleOnTable, cardScaleOnTable) 
 	playerHandVision.erase(card)
-	innerCircleCardNames[slotID] = card.name
+	innerCircleCardNames[slotID] = card
 	print(card.x)
+	
 	match slotID:
 		0:
 			
@@ -171,9 +173,16 @@ func putPlayerCardOnTable(card, slotID: int):
 			y = get_node("PlayerCards/P12").position.y + 9
 			card.rotation = -(PI/8)	
 			
-	card.display_card(x, y, cardScaleOnTable, card.index, onSelectAICard)
+	card.display_card(x, y, cardScaleOnTable, card.index, cardActions)
+	card.isOnTable = 1
 	print(card.x)
+	selectedCard = null
 	
+func attackCardOnTable(slotID: int):
+	var chosenCard = outerCircleCardNames[slotID]
+	if chosenCard:
+		chosenCard.hp = chosenCard.hp - 1
+		print("HP ",chosenCard.hp)
 	
 func useCardSlot(event, slotID: int, isInnerCircle: bool):
 	if event is InputEventMouseButton:
@@ -181,11 +190,15 @@ func useCardSlot(event, slotID: int, isInnerCircle: bool):
 		if event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
-					print(selectedCard)
-					if (selectedCard):
-						print(" ! trying to put card on table ! ")
-						print(slotID)
-						putPlayerCardOnTable(selectedCard, slotID)
+					if (isInnerCircle):
+						if (selectedCard):
+							print(" ! trying to put card on table ! ")
+							print(slotID)
+							print(selectedCard.type)
+							# проверка является ли карта Юнитом и можно ли её положить на стол
+							if(selectedCard.type == "Units"):
+								putPlayerCardOnTable(selectedCard, slotID)
+								
 					pass
 				MOUSE_BUTTON_RIGHT:	
 					pass
@@ -250,10 +263,6 @@ func _on_p_5_gui_input(event):
 
 func _on_p_6_gui_input(event):
 	useCardSlot(event, 5, true)
-
-
-
-	
 	
 	
 # все для ИИ
@@ -274,6 +283,16 @@ func moveAI():
 	var rng = RandomNumberGenerator.new()
 	# выбираем из колоды ИИ карту
 	var indexCard = rng.randi_range(0, deckAI.size() - 1)
+	# Если карта которая хранится в колоде по индексу IndexCard является способностью,
+	# то она не кладется на стол
+	if (CardsDatabase.DATA[deckAI[indexCard]][1] == "Ability"):
+		var visibleCardAI = Card.instantiate()
+		add_child(visibleCardAI)
+		visibleCardAI.display_card(410, 440, 0.27, deckAI[indexCard], cardActions)
+		visibleCardAI.playSpellAnimation()
+		await get_tree().create_timer(2).timeout
+		visibleCardAI.queue_free()
+		return
 	# выбираем слот 
 	var index = rng.randi_range(0, freeCellAIDeck.size() - 1)
 	var indexCell = freeCellAIDeck[index]
@@ -282,8 +301,9 @@ func moveAI():
 	# добавлем карту в видимые карты ИИ по индесу слота
 	var visibleCardAI = Card.instantiate()
 	add_child(visibleCardAI)
-	
-	outerCircleCardNames[indexCell] = visibleCardAI.name
+	visibleCardAI.isOnTable = -1
+	#Добавляем карту в массив карт которые находятся на внешнем круге
+	outerCircleCardNames[indexCell] = visibleCardAI
 	putCardOnTable(visibleCardAI, deckAI[indexCard], indexCell)
 	# удаляем карту из доступной колоды
 	deckAI.remove_at(indexCard)
@@ -292,6 +312,7 @@ func moveAI():
 	
 
 func putCardOnTable(visibleCardAI, card, indexCell):
+	
 	var x = 0
 	var y = 0
 	var rotation = 0
@@ -349,9 +370,32 @@ func putCardOnTable(visibleCardAI, card, indexCell):
 	cellAIDeck[indexCell] = visibleCardAI 
 	
 func onSelectAICard(card):
-	print(card.name)
+	if (selectedCard):
+		if (selectedCard.isOnTable):
+			print(card.hp)
+			card.hp = card.hp - selectedCard.attack
+			print(card.hp)
+			selectedCard.hp = selectedCard.hp - card.attack
+			if (card.hp <= 0 ):
+				print(freeCellAIDeck)
+				print(outerCircleCardNames)
+				print(outerCircleCardNames.find(card))
+				freeCellAIDeck.append(outerCircleCardNames.find(card))
+				card.queue_free()
+			
+			if (selectedCard.hp <= 0 ):
+				selectedCard.queue_free()
+				# Удалить selectedCard из массива innerCircleCardNames
+	
+	selectedCard.display_card_void()
+	card.display_card_void()
+	selectedCard = null
+			
 	return
 	
+
+
+
 
 
 
