@@ -25,11 +25,12 @@ func _on_easy_mode_button_pressed():
 	MenuAudio.buttonPressedSound()
 	if (DeckManager.deck.size() == DeckManager.deckMaxSize):
 		BlackTransition.change_buttons_dark(self,"res://KCards/scenes/menu/battlefield/battlenode.tscn")
+		MenuAudio.changeBackgroundMusic("battle")
 	else:
 		SceneTransition.change_buttons(self,"res://KCards/scenes/menu/EditDeck.tscn")
-	
+		MenuAudio.changeBackgroundMusic("deckBuilding")
 	#TODO add transition
-	MenuAudio.changeBackgroundMusic("battle")
+	
 
 
 func _on_normal_mode_button_pressed():

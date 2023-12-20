@@ -177,6 +177,7 @@ func putPlayerCardOnTable(card, slotID: int):
 	card.isOnTable = 1
 	print(card.x)
 	selectedCard = null
+	$CardSlotsGlow.play_backwards("Glows")
 	
 func attackCardOnTable(slotID: int):
 	var chosenCard = outerCircleCardNames[slotID]
@@ -387,9 +388,9 @@ func onSelectAICard(card):
 				selectedCard.queue_free()
 				# Удалить selectedCard из массива innerCircleCardNames
 	
-	selectedCard.display_card_void()
-	card.display_card_void()
-	selectedCard = null
+		selectedCard.display_card_void()
+		card.display_card_void()
+		selectedCard = null
 			
 	return
 	

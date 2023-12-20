@@ -31,7 +31,7 @@ func display_card(x: int, y: int, scaler: float, index: int, mouseLeftPressedCal
 	self.mouseLeftPressedCallback = mouseLeftPressedCallback
 	
 	var CardSize = $Button.size
-	type = CardInfo[1]
+	var type = CardInfo[1]
 	if type == "Ability":
 		$Button/Bars/BottomBar/Attack.visible = false
 		$Button/Bars/BottomBar/Health.visible = false

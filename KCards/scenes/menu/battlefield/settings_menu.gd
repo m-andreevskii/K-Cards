@@ -26,6 +26,8 @@ func _on_back_button_pressed():
 	#SceneTransition.change_buttons(self,"res://KCards/scenes/menu/main_menu.tscn")
 	
 func _on_surrender_button_pressed():
-	pass
-
+	MenuAudio.buttonPressedSound()
+	get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().queue_free()
+	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/difficulty_mode_menu.tscn")
+	MenuAudio.changeBackgroundMusic("menu")
 
