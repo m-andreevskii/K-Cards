@@ -59,11 +59,12 @@ func drawCards(start_of_hand: int, count: int):
 		
 		CardIndex = CardIndex + 1
 		playerHand.append(playableCard[index])
-		if CardIndex > MaxCardInDeck:
+		if CardIndex > MaxCardInDeck: # shuffle deck
 			CardIndex = 0
 			playableCard.shuffle()
+			MenuAudio.shuffleDeckSound()
 			break
-	
+	MenuAudio.drawCardsSound()
 
 func displayHand():
 	var j = 0
@@ -373,14 +374,11 @@ func putCardOnTable(visibleCardAI, card, indexCell):
 func onSelectAICard(card):
 	if (selectedCard):
 		if (selectedCard.isOnTable):
-			print(card.hp)
+			MenuAudio.BAM()
 			card.hp = card.hp - selectedCard.attack
-			print(card.hp)
 			selectedCard.hp = selectedCard.hp - card.attack
 			if (card.hp <= 0 ):
-				print(freeCellAIDeck)
-				print(outerCircleCardNames)
-				print(outerCircleCardNames.find(card))
+				
 				freeCellAIDeck.append(outerCircleCardNames.find(card))
 				card.queue_free()
 			
@@ -394,7 +392,6 @@ func onSelectAICard(card):
 			
 	return
 	
-
 
 
 

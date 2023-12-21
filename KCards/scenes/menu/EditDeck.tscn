@@ -1,14 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcr7ngow11bqq"]
+[gd_scene load_steps=20 format=3 uid="uid://dcr7ngow11bqq"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/EditDeck.gd" id="1_jrukb"]
 [ext_resource type="Texture2D" uid="uid://ca3hi28tm1xly" path="res://KCards/images/editDeck/background.png" id="2_ylvoy"]
 [ext_resource type="Texture2D" uid="uid://bjqc1rwo25vd5" path="res://KCards/images/editDeck/confirm.png" id="3_fvs0m"]
 [ext_resource type="Texture2D" uid="uid://uarw0pt1dxc" path="res://KCards/images/editDeck/fire.png" id="3_mmgks"]
+[ext_resource type="Texture2D" uid="uid://bu2khnllw4t4e" path="res://KCards/images/editDeck/confirmDark.png" id="4_xo0sv"]
 [ext_resource type="Texture2D" uid="uid://c2w1rwjfqvlkl" path="res://KCards/images/editDeck/arrowLeftDark.png" id="5_80y76"]
+[ext_resource type="Texture2D" uid="uid://cy8t10vn1cnwl" path="res://KCards/images/editDeck/confirmLight.png" id="5_tskda"]
 [ext_resource type="Texture2D" uid="uid://cmru247ob76v4" path="res://KCards/images/editDeck/arrowLeft.png" id="7_cl5jb"]
 [ext_resource type="Texture2D" uid="uid://ccgq3565gc3sm" path="res://KCards/images/editDeck/arrowRightDark.png" id="7_d2stb"]
+[ext_resource type="Texture2D" uid="uid://d2vkddm5mqgmt" path="res://KCards/images/editDeck/arrowLeftLight.png" id="8_47yda"]
 [ext_resource type="Texture2D" uid="uid://c86gpudsymum" path="res://KCards/images/editDeck/arrowRight.png" id="8_fsgqj"]
 [ext_resource type="Texture2D" uid="uid://vur4ds5ciy7r" path="res://KCards/images/editDeck/filter.png" id="9_77pkf"]
+[ext_resource type="Texture2D" uid="uid://ckego6pnre1kn" path="res://KCards/images/editDeck/arrowRightLight.png" id="11_o8d38"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkrox"]
 atlas = ExtResource("3_mmgks")
@@ -67,6 +71,8 @@ offset_top = -39.0
 offset_right = 605.0
 offset_bottom = 44.0
 texture_normal = ExtResource("3_fvs0m")
+texture_pressed = ExtResource("4_xo0sv")
+texture_hover = ExtResource("5_tskda")
 
 [node name="LeftButton" type="TextureButton" parent="."]
 offset_left = 8.0
@@ -75,6 +81,7 @@ offset_right = 68.0
 offset_bottom = 248.0
 texture_normal = ExtResource("7_cl5jb")
 texture_pressed = ExtResource("5_80y76")
+texture_hover = ExtResource("8_47yda")
 
 [node name="RightButton" type="TextureButton" parent="."]
 offset_left = 653.0
@@ -83,6 +90,7 @@ offset_right = 713.0
 offset_bottom = 247.0
 texture_normal = ExtResource("8_fsgqj")
 texture_pressed = ExtResource("7_d2stb")
+texture_hover = ExtResource("11_o8d38")
 
 [node name="FireAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(360, 240)

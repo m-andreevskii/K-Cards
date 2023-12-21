@@ -16,6 +16,14 @@ func _process(delta):
 func buttonPressedSound() -> void:
 	$ButtonPressedSound.play()
 	
+func drawCardsSound() -> void:
+	$DrawCardsSound.play()
+	
+func shuffleDeckSound() -> void:
+	$ShuffleDeckSound.play()
+
+func BAM() -> void:
+	$BAM.play()
 
 func changeBackgroundMusic(newMusic: String) -> void:
 	for audioStream in self.get_children():

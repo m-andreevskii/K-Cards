@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw3idat6ite0m"]
+[gd_scene load_steps=6 format=3 uid="uid://dw3idat6ite0m"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/MainMenuButtons.gd" id="1_cau0y"]
 [ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="2_wtrn0"]
 [ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="3_cx16g"]
+[ext_resource type="Texture2D" uid="uid://5b5ekie1feik" path="res://KCards/images/bg_buttons_picture/unlock_button_light.png" id="3_i33ay"]
 [ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="4_34gkm"]
 
 [node name="ButtonsLayer2" type="CanvasLayer"]
@@ -25,6 +26,7 @@ offset_right = 277.0
 offset_bottom = 167.0
 disabled = true
 texture_normal = ExtResource("2_wtrn0")
+texture_hover = ExtResource("3_i33ay")
 texture_disabled = ExtResource("3_cx16g")
 
 [node name="Label" type="Label" parent="CampaignButton"]
@@ -45,6 +47,7 @@ offset_right = 276.0
 offset_bottom = 347.0
 texture_normal = ExtResource("2_wtrn0")
 texture_pressed = ExtResource("4_34gkm")
+texture_hover = ExtResource("3_i33ay")
 texture_disabled = ExtResource("3_cx16g")
 
 [node name="Label" type="Label" parent="ExitButton"]
@@ -66,6 +69,7 @@ offset_right = 211.0
 offset_bottom = -18.0
 texture_normal = ExtResource("2_wtrn0")
 texture_pressed = ExtResource("4_34gkm")
+texture_hover = ExtResource("3_i33ay")
 texture_disabled = ExtResource("3_cx16g")
 
 [node name="Label" type="Label" parent="ExitButton/BattlesButton"]

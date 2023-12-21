@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7hwflxfrgqd6"]
+[gd_scene load_steps=14 format=3 uid="uid://c7hwflxfrgqd6"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/battlefield/settings_button.gd" id="1_stk77"]
 [ext_resource type="Texture2D" uid="uid://b8xvvfja0afjn" path="res://KCards/images/bg_buttons_picture/k-shest.png" id="2_qub0f"]
 [ext_resource type="Texture2D" uid="uid://n6gxsq4kgvyu" path="res://KCards/images/bg_buttons_picture/k-shest-temn.png" id="3_3go68"]
+[ext_resource type="Texture2D" uid="uid://rn7vlaxqvwhm" path="res://KCards/images/bg_buttons_picture/k-shest_light.png" id="4_8p1h5"]
 [ext_resource type="Script" path="res://KCards/scenes/menu/battlefield/settings_popup.gd" id="4_m0jvr"]
 [ext_resource type="Texture2D" uid="uid://bftykyese3swo" path="res://KCards/images/bg_buttons_picture/settings_window.png" id="5_c8s8u"]
 [ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="6_ic4jp"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" path="res://KCards/scenes/menu/battlefield/settings_menu.gd" id="8_s53f3"]
 [ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="9_v4kya"]
 [ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="10_x1kav"]
+[ext_resource type="Texture2D" uid="uid://5b5ekie1feik" path="res://KCards/images/bg_buttons_picture/unlock_button_light.png" id="11_sjvso"]
 
 [sub_resource type="Theme" id="Theme_aaexw"]
 
@@ -23,6 +25,7 @@ offset_right = 708.0
 offset_bottom = 77.0
 texture_normal = ExtResource("2_qub0f")
 texture_pressed = ExtResource("3_3go68")
+texture_hover = ExtResource("4_8p1h5")
 
 [node name="SettingsPopup1" type="Popup" parent="."]
 transparent_bg = true
@@ -76,6 +79,7 @@ offset_right = 164.286
 offset_bottom = 307.143
 texture_normal = ExtResource("6_ic4jp")
 texture_pressed = ExtResource("9_v4kya")
+texture_hover = ExtResource("11_sjvso")
 texture_disabled = ExtResource("10_x1kav")
 
 [node name="Label" type="Label" parent="SettingsPopup1/Sprite2D/TextureRect/Buttons/SurrenderButton"]
@@ -96,6 +100,7 @@ offset_right = 164.286
 offset_bottom = 195.714
 texture_normal = ExtResource("6_ic4jp")
 texture_pressed = ExtResource("9_v4kya")
+texture_hover = ExtResource("11_sjvso")
 texture_disabled = ExtResource("10_x1kav")
 
 [node name="Label" type="Label" parent="SettingsPopup1/Sprite2D/TextureRect/Buttons/FullScreenButton"]
@@ -116,6 +121,7 @@ offset_right = 405.714
 offset_bottom = 311.429
 texture_normal = ExtResource("6_ic4jp")
 texture_pressed = ExtResource("9_v4kya")
+texture_hover = ExtResource("11_sjvso")
 texture_disabled = ExtResource("10_x1kav")
 
 [node name="Label" type="Label" parent="SettingsPopup1/Sprite2D/TextureRect/Buttons/BackButton"]

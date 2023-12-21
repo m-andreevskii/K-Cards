@@ -1,17 +1,42 @@
-[gd_scene load_steps=12 format=3 uid="uid://0mdjnjd1kus3"]
+[gd_scene load_steps=14 format=3 uid="uid://0mdjnjd1kus3"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/settings_button.gd" id="1_dhobf"]
 [ext_resource type="Texture2D" uid="uid://b8xvvfja0afjn" path="res://KCards/images/bg_buttons_picture/k-shest.png" id="1_mltkk"]
 [ext_resource type="Texture2D" uid="uid://n6gxsq4kgvyu" path="res://KCards/images/bg_buttons_picture/k-shest-temn.png" id="2_gqgtm"]
-[ext_resource type="Script" path="res://KCards/scenes/menu/hello_world_Popup.gd" id="4_vcqyq"]
+[ext_resource type="Texture2D" uid="uid://rn7vlaxqvwhm" path="res://KCards/images/bg_buttons_picture/k-shest_light.png" id="4_to3cy"]
 [ext_resource type="Texture2D" uid="uid://bftykyese3swo" path="res://KCards/images/bg_buttons_picture/settings_window.png" id="5_sq8ak"]
 [ext_resource type="Texture2D" uid="uid://dap7i3bphd2hu" path="res://KCards/images/bg_buttons_picture/unlock_button.png" id="6_o42hi"]
 [ext_resource type="Script" path="res://KCards/scenes/menu/settings_volume.gd" id="7_3cdvo"]
 [ext_resource type="Script" path="res://KCards/scenes/menu/settings_menu.gd" id="8_wjf5q"]
 [ext_resource type="Texture2D" uid="uid://kam5g042pbtj" path="res://KCards/images/bg_buttons_picture/k-temn.png" id="9_mnuuc"]
 [ext_resource type="Texture2D" uid="uid://dkqp1aemjln4s" path="res://KCards/images/bg_buttons_picture/lock_button.png" id="10_l2prj"]
+[ext_resource type="Texture2D" uid="uid://5b5ekie1feik" path="res://KCards/images/bg_buttons_picture/unlock_button_light.png" id="11_6ussa"]
 
 [sub_resource type="Theme" id="Theme_aaexw"]
+
+[sub_resource type="GDScript" id="GDScript_3f470"]
+script/source = "extends Popup
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+
+
+func _on_settings_button_pressed():
+	popup()
+
+
+func _on_back_button_pressed():
+	hide()
+"
 
 [node name="SettingsButton0" type="CanvasLayer"]
 script = ExtResource("1_dhobf")
@@ -23,6 +48,7 @@ offset_right = 708.0
 offset_bottom = 77.0
 texture_normal = ExtResource("1_mltkk")
 texture_pressed = ExtResource("2_gqgtm")
+texture_hover = ExtResource("4_to3cy")
 
 [node name="SettingsPopup" type="Popup" parent="."]
 transparent_bg = true
@@ -30,7 +56,7 @@ initial_position = 1
 size = Vector2i(448, 280)
 transparent = true
 theme = SubResource("Theme_aaexw")
-script = ExtResource("4_vcqyq")
+script = SubResource("GDScript_3f470")
 
 [node name="Sprite2D" type="Sprite2D" parent="SettingsPopup"]
 scale = Vector2(0.7, 0.7)
@@ -76,6 +102,7 @@ offset_right = 164.286
 offset_bottom = 195.714
 texture_normal = ExtResource("6_o42hi")
 texture_pressed = ExtResource("9_mnuuc")
+texture_hover = ExtResource("11_6ussa")
 texture_disabled = ExtResource("10_l2prj")
 
 [node name="Label" type="Label" parent="SettingsPopup/Sprite2D/Buttons/FullScreenButton"]
@@ -96,6 +123,7 @@ offset_right = 288.571
 offset_bottom = 317.143
 texture_normal = ExtResource("6_o42hi")
 texture_pressed = ExtResource("9_mnuuc")
+texture_hover = ExtResource("11_6ussa")
 texture_disabled = ExtResource("10_l2prj")
 
 [node name="Label" type="Label" parent="SettingsPopup/Sprite2D/Buttons/BackButton"]
