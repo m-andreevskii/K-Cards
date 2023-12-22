@@ -7,7 +7,7 @@ var configFile = ConfigFile.new()
 # Default settings (the array might be changed at runtime):
 var _settings = {
 	"audio": {
-		"music_volume": 0.3
+		"music_volume": 0.5
 	},
 	"graphics": {
 		"is_fullscreen": true

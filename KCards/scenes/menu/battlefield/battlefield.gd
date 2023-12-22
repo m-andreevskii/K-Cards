@@ -119,7 +119,7 @@ func putPlayerCardOnTable(card, slotID: int):
 	card.scale = Vector2(cardScaleOnTable, cardScaleOnTable) 
 	playerHandVision.erase(card)
 	innerCircleCardNames[slotID] = card
-	print(card.x)
+	
 	
 	match slotID:
 		0:
@@ -136,7 +136,7 @@ func putPlayerCardOnTable(card, slotID: int):
 			y = get_node("PlayerCards/P3").position.y + 24
 			card.rotation = (PI/3)			
 		3:
-			print(get_node("PlayerCards/P4").position.x)
+			
 			x = get_node("PlayerCards/P4").position.x + 30
 			y = get_node("PlayerCards/P4").position.y  - 5
 			card.rotation = (PI - PI/3) + PI
@@ -161,7 +161,7 @@ func putPlayerCardOnTable(card, slotID: int):
 			y = get_node("PlayerCards/P9").position.y + 27
 			card.rotation = (PI + PI/3) + PI
 		9:
-			print(get_node("PlayerCards/P9").position.x)
+			
 			x = get_node("PlayerCards/P10").position.x + 22
 			y = get_node("PlayerCards/P10").position.y - 10
 			card.rotation = -(PI/3)
@@ -176,7 +176,7 @@ func putPlayerCardOnTable(card, slotID: int):
 			
 	card.display_card(x, y, cardScaleOnTable, card.index, cardActions)
 	card.isOnTable = 1
-	print(card.x)
+	
 	selectedCard = null
 	$CardSlotsGlow.play_backwards("Glows")
 	
@@ -184,7 +184,7 @@ func attackCardOnTable(slotID: int):
 	var chosenCard = outerCircleCardNames[slotID]
 	if chosenCard:
 		chosenCard.hp = chosenCard.hp - 1
-		print("HP ",chosenCard.hp)
+		
 	
 func useCardSlot(event, slotID: int, isInnerCircle: bool):
 	if event is InputEventMouseButton:
@@ -194,9 +194,7 @@ func useCardSlot(event, slotID: int, isInnerCircle: bool):
 				MOUSE_BUTTON_LEFT:
 					if (isInnerCircle):
 						if (selectedCard):
-							print(" ! trying to put card on table ! ")
-							print(slotID)
-							print(selectedCard.type)
+						
 							# проверка является ли карта Юнитом и можно ли её положить на стол
 							if(selectedCard.type == "Units"):
 								putPlayerCardOnTable(selectedCard, slotID)
