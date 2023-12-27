@@ -445,6 +445,9 @@ func moveAI():
 		visibleCardAI.playSpellAnimation()
 		await get_tree().create_timer(2).timeout
 		visibleCardAI.queue_free()
+		var randomNumber = rng.randi_range(0, 3)
+		if randomNumber <= 1:
+			attackCard()
 		return
 	print("ahh")
 	attackCard()
@@ -478,23 +481,25 @@ func attackCard():
 		if (outerCircleCardNames != null and innerCircleCardNames != null ):
 			for i in outerCircleCardNames:
 				if i != null:
-
-					for j in innerCircleCardNames:
-						if j != null:
-							j.hp -= i.attack
-							i.hp -= j.attack
-							
-							if (i.hp <= 0 ):
-					
-								freeCellAIDeck.append(outerCircleCardNames.find(i))
-								i.queue_free()
-								print(outerCircleCardNames)
-							if (j.hp <= 0 ):
-					
-								j.queue_free()
-							j.display_card_void()
-							i.display_card_void()
-							return
+					if i.attack != 0:
+						for j in innerCircleCardNames:
+							if j != null:
+								j.hp -= i.attack
+								i.hp -= j.attack
+								
+								if (i.hp <= 0 ):
+						
+									freeCellAIDeck.append(outerCircleCardNames.find(i))
+									i.queue_free()
+									print(outerCircleCardNames)
+								if (j.hp <= 0 ):
+						
+									j.queue_free()
+								j.display_card_void()
+								i.display_card_void()
+								random_number = rng.randi_range(0, 5)
+								if  random_number < 1:
+									return
 	else:
 		for i in outerCircleCardNames:
 			if i != null:
@@ -502,8 +507,11 @@ func attackCard():
 					random_number = rng.randi_range(0, 5)
 					if  random_number < 3: 
 						MenuAudio.BAM()
+						print(i.id)
 						CurrentPlayerHealth -= i.attack
-						return
+						random_number = rng.randi_range(0, 5)
+						if  random_number < 1:
+							return
 
 func putCardOnTable(visibleCardAI, card, indexCell):
 	
