@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwu7fa6vlh3fd"]
+[gd_scene load_steps=20 format=3 uid="uid://cwu7fa6vlh3fd"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/battlefield/battlefield.gd" id="1_mjkct"]
 [ext_resource type="Texture2D" uid="uid://bjnjhc5yx1ctq" path="res://KCards/images/battlefield/background1.png" id="1_nripy"]
@@ -77,6 +77,42 @@ glow_blend_mode = 0
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ws3w3"]
 
+[sub_resource type="Animation" id="Animation_o78f1"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Winner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(260, -81)]
+}
+
+[sub_resource type="Animation" id="Animation_ydc26"]
+resource_name = "WinAn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Winner:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.420448, 1.7411),
+"update": 0,
+"values": [Vector2(260, -81), Vector2(260, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_puxhv"]
+_data = {
+"RESET": SubResource("Animation_o78f1"),
+"WinAn": SubResource("Animation_ydc26")
+}
+
 [node name="battlefield" type="CanvasLayer"]
 script = ExtResource("1_mjkct")
 
@@ -86,30 +122,6 @@ texture = ExtResource("1_nripy")
 
 [node name="SettingsButton0" parent="." instance=ExtResource("2_vlcb8")]
 layer = 2
-
-[node name="Mana0" type="Sprite2D" parent="."]
-position = Vector2(26, 64)
-texture = ExtResource("3_6xqd5")
-
-[node name="Mana1" type="Sprite2D" parent="."]
-position = Vector2(26, 372)
-texture = ExtResource("3_6xqd5")
-
-[node name="Mana2" type="Sprite2D" parent="."]
-position = Vector2(27, 309)
-texture = ExtResource("3_6xqd5")
-
-[node name="Mana3" type="Sprite2D" parent="."]
-position = Vector2(25, 247)
-texture = ExtResource("3_6xqd5")
-
-[node name="Mana4" type="Sprite2D" parent="."]
-position = Vector2(26, 188)
-texture = ExtResource("3_6xqd5")
-
-[node name="Mana5" type="Sprite2D" parent="."]
-position = Vector2(27, 127)
-texture = ExtResource("3_6xqd5")
 
 [node name="Field" type="Sprite2D" parent="."]
 position = Vector2(344, 253)
@@ -396,6 +408,79 @@ offset_bottom = 156.0
 rotation = -0.436332
 color = Color(1, 1, 1, 0.188235)
 
+[node name="EnemyHP" type="Label" parent="."]
+offset_left = 418.0
+offset_top = 12.0
+offset_right = 458.0
+offset_bottom = 38.0
+text = "20"
+
+[node name="EnemyAcitve" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -228.0
+offset_right = 34.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Winner" type="Label" parent="."]
+offset_left = 260.0
+offset_top = -81.0
+offset_right = 325.0
+offset_bottom = -55.0
+scale = Vector2(3, 3)
+theme_override_colors/font_color = Color(0.6, 0.796078, 0, 1)
+text = "Победа!"
+
+[node name="WinnerLableAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_puxhv")
+}
+
+[node name="PlayerHp" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 434.0
+offset_right = 56.0
+offset_bottom = 460.0
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0.254902, 0.176471, 1)
+theme_override_colors/font_shadow_color = Color(0.533333, 0.705882, 0.623529, 1)
+text = "20/20"
+
+[node name="Container" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Mana0" type="Sprite2D" parent="Container"]
+position = Vector2(27, 377)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana1" type="Sprite2D" parent="Container"]
+position = Vector2(28, 318)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana2" type="Sprite2D" parent="Container"]
+position = Vector2(28, 254)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana3" type="Sprite2D" parent="Container"]
+position = Vector2(29, 193)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana4" type="Sprite2D" parent="Container"]
+position = Vector2(28, 135)
+texture = ExtResource("3_6xqd5")
+
+[node name="Mana5" type="Sprite2D" parent="Container"]
+position = Vector2(29, 77)
+texture = ExtResource("3_6xqd5")
+
 [connection signal="pressed" from="MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="gui_input" from="PlayerCards/P3" to="." method="_on_p_3_gui_input"]
 [connection signal="gui_input" from="PlayerCards/P9" to="." method="_on_p_9_gui_input"]
@@ -421,3 +506,4 @@ color = Color(1, 1, 1, 0.188235)
 [connection signal="gui_input" from="EnemyCards/E11" to="." method="_on_e_11_gui_input"]
 [connection signal="gui_input" from="EnemyCards/E5" to="." method="_on_e_5_gui_input"]
 [connection signal="gui_input" from="EnemyCards/E12" to="." method="_on_e_12_gui_input"]
+[connection signal="gui_input" from="EnemyAcitve" to="." method="_on_enemy_acitve_gui_input"]

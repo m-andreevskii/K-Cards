@@ -1,6 +1,9 @@
 extends Node
 
 var Card = preload("res://KCards/scenes/card_baseForBattle.tscn")
+var Empty_Mana =preload("res://KCards/images/battlefield/mana4.png")
+var Full_Mana =preload("res://KCards/images/battlefield/mana5.png")
+
 var deck = []
 var deckMaxSize = 20
 var playerHand = []
@@ -21,6 +24,9 @@ var innerCircleCardNames = []
 var numberOfCardsInCircle = 12
 var cardScaleOnTable = 0.14
 var CardInfo = CardsDatabase
+var currentEnemyHealth = 20
+var availableMana = 3
+var manaShift = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,8 +34,9 @@ func _ready():
 	outerCircleCardNames.fill("")
 	innerCircleCardNames.resize(numberOfCardsInCircle)
 	innerCircleCardNames.fill("")
-	
-	
+	$EnemyHP.text = "20/" + str(currentEnemyHealth)
+	$Winner.z_index = 3
+	DrawMana()
 	var file = FileAccess.open("user://" + "deck.txt", FileAccess.READ)
 	deck.clear()
 	var str
@@ -52,7 +59,49 @@ func _ready():
 	
 	
 	
+func DrawMana():
+	var ManaSprites = $Container.get_children()
 	
+	match availableMana:
+		
+		0:
+			
+			for i in range(6):
+				ManaSprites[i].texture = Empty_Mana
+		1:
+			for i in range(1):
+				ManaSprites[i].texture = Full_Mana
+			for i in range(1,6):
+				ManaSprites[i].texture = Empty_Mana
+		2:		
+			for i in range(2):
+				ManaSprites[i].texture = Full_Mana
+			for i in range(2,6):
+				ManaSprites[i].texture = Empty_Mana
+			
+		3:	
+			print("asdassssssssssssss")
+			for i in range(3):
+				ManaSprites[i].texture = Full_Mana
+			for i in range(3,6):
+				ManaSprites[i].texture = Empty_Mana
+			
+		4:	
+			for i in range(4):
+				ManaSprites[i].texture = Full_Mana
+			for i in range(4,6):
+				ManaSprites[i].texture = Empty_Mana
+			
+			
+		5:		
+			for i in range(5):
+				ManaSprites[i].texture = Full_Mana
+			for i in range(5,6):
+				ManaSprites[i].texture = Empty_Mana
+		6:
+			for i in range(6):
+				ManaSprites[i].texture = Full_Mana
+
 func drawCards(start_of_hand: int, count: int):
 	
 	for index in range(start_of_hand, start_of_hand + count):
@@ -70,6 +119,7 @@ func displayHand():
 	var j = 0
 	for i in playerHand:
 		var visibleCard = Card.instantiate()
+		visibleCard.z_index = 2
 		add_child(visibleCard)
 		visibleCard.display_card(200+j*70, 440, 0.27, i, cardActions)
 		j = j + 1
@@ -87,11 +137,14 @@ func _on_move_button_pressed():
 		x.queue_free()
 	playerHandVision.clear()
 	drawCards(CardIndex,5)
-	
+	print(manaShift)
+	if manaShift != 6:
+		manaShift += 0.5
+	availableMana = int(floor(manaShift))
+	DrawMana()
 	displayHand()
 	moveAI()
 	
-	pass
 
 func saveFile():
 	var file = FileAccess.open("user://" + "deck.txt", FileAccess.WRITE_READ)
@@ -115,7 +168,13 @@ func putPlayerCardOnTable(card, slotID: int):
 	var x = 0
 	var y = 0
 	var rotation = 0
-	
+	print("abll: ",availableMana)
+	if card.mana > availableMana:
+		print(card.mana)
+		print(availableMana)
+		return
+	availableMana -= card.mana
+	DrawMana()
 	card.scale = Vector2(cardScaleOnTable, cardScaleOnTable) 
 	playerHandVision.erase(card)
 	innerCircleCardNames[slotID] = card
@@ -264,7 +323,25 @@ func _on_p_5_gui_input(event):
 func _on_p_6_gui_input(event):
 	useCardSlot(event, 5, true)
 	
+func _on_enemy_acitve_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+						if (selectedCard):
+							if(selectedCard.isOnTable):
+								MenuAudio.BAM()
+								currentEnemyHealth -= selectedCard.attack
+								$EnemyHP.text = "20/" + str(currentEnemyHealth)
+								if currentEnemyHealth <= 0:
+									WinFunction();
 	
+func WinFunction():
+	$WinnerLableAnimation.play("WinAn")
+	await get_tree().create_timer(2).timeout
+	queue_free()
+	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/difficulty_mode_menu.tscn")
+	MenuAudio.changeBackgroundMusic("menu")
 # все для ИИ
 
 # генерация изначальной колоды (+ один ход, тк ИИ ходит первым)
@@ -287,6 +364,7 @@ func moveAI():
 	# то она не кладется на стол
 	if (CardsDatabase.DATA[deckAI[indexCard]][1] == "Ability"):
 		var visibleCardAI = Card.instantiate()
+		visibleCardAI.z_index = 2
 		add_child(visibleCardAI)
 		visibleCardAI.display_card(410, 440, 0.27, deckAI[indexCard], cardActions)
 		visibleCardAI.playSpellAnimation()
@@ -390,6 +468,7 @@ func onSelectAICard(card):
 			
 	return
 	
+
 
 
 

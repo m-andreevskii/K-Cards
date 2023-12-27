@@ -19,6 +19,7 @@ var default_z_index = self.z_index
 var mouseLeftPressedCallback
 var hp 
 var attack 
+var mana
 # isOnTable нужно, чтобы различать карты игрока на столе и карты игрока на игровом поле
 var isOnTable = 0
 #Тип карты нужен, чтобы определять, можно ли положить карту на стол
@@ -48,6 +49,7 @@ func display_card(x: int, y: int, scaler: float, index: int, mouseLeftPressedCal
 		$Button/Bars/BottomBar/Health.visible = true
 		self.hp = CardInfo[7]
 		self.attack = CardInfo[6]
+		self.mana = CardInfo[2]
 	
 	CardImage = str("res://KCards/images/card/card_images/", CardInfo[5])
 	$Button/Background.scale = CardSize/$Button/Background.texture.get_size()
