@@ -33,6 +33,7 @@ var isSelectedTexturePath = "res://KCards/images/card/assets/card_background_fra
 var isSelectedTexture = load(isSelectedTexturePath)
 var regularTexturePath = "res://KCards/images/card/assets/card_background.png"
 var regularTexture = load(regularTexturePath)
+var isCardPlayed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

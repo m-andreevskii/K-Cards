@@ -150,7 +150,9 @@ func _process(delta):
 func _on_move_button_pressed():
 	deselectCard()
 	$CardSlotsGlow.stop()
-	
+	for card in innerCircleCardNames:
+		if card != null:
+			card.isCardPlayed = 0
 	playerHand.clear()
 	for x in playerHandVision:
 		x.queue_free()
@@ -557,21 +559,23 @@ func putCardOnTable(visibleCardAI, card, indexCell):
 func onSelectAICard(card):
 	if (selectedCard):
 		if (selectedCard.isOnTable):
-			MenuAudio.BAM()
-			card.hp = card.hp - selectedCard.attack
-			selectedCard.hp = selectedCard.hp - card.attack
-			if (card.hp <= 0 ):
-				print (card.id)
-				deckAI.append(card.id - 1)
-				freeCellAIDeck.append(outerCircleCardNames.find(card))
-				card.queue_free()
-				print (deckAI)
+			if(selectedCard.isCardPlayed == 0):
+				MenuAudio.BAM()
+				selectedCard.isCardPlayed = 1
+				card.hp = card.hp - selectedCard.attack
+				selectedCard.hp = selectedCard.hp - card.attack
+				if (card.hp <= 0 ):
+					print (card.id)
+					deckAI.append(card.id - 1)
+					freeCellAIDeck.append(outerCircleCardNames.find(card))
+					card.queue_free()
+					print (deckAI)
+					
 				
+				if (selectedCard.hp <= 0 ):
+					selectedCard.queue_free()
+					# TODO: Удалить selectedCard из массива innerCircleCardNames
 			
-			if (selectedCard.hp <= 0 ):
-				selectedCard.queue_free()
-				# TODO: Удалить selectedCard из массива innerCircleCardNames
-		
 		if (selectedCard.type == "Ability" and selectedCard.isTargetable):
 			if selectedCard.cost <= availableMana:
 				availableMana -= selectedCard.cost
