@@ -448,6 +448,9 @@ func moveAI():
 		var randomNumber = rng.randi_range(0, 3)
 		if randomNumber <= 1:
 			attackCard()
+			$PlayerHp.text = "20/" + str(CurrentPlayerHealth)
+			if CurrentPlayerHealth <= 0:
+				FailFunction()
 		return
 	print("ahh")
 	attackCard()
