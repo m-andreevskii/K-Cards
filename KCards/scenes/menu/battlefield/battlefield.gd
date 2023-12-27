@@ -27,7 +27,8 @@ var CardInfo = CardsDatabase
 var currentEnemyHealth = 20
 var availableMana = 3
 var manaShift = 3
-
+var WinFlag = false
+var CurrentPlayerHealth = 20
 
 func selectCard(card: BattleCard):
 	if (selectedCard):
@@ -44,11 +45,13 @@ func deselectCard():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	outerCircleCardNames.resize(numberOfCardsInCircle)
-	outerCircleCardNames.fill("")
+	outerCircleCardNames.fill(null)
 	innerCircleCardNames.resize(numberOfCardsInCircle)
-	innerCircleCardNames.fill("")
+	innerCircleCardNames.fill(null)
 	$EnemyHP.text = "20/" + str(currentEnemyHealth)
 	$Winner.z_index = 3
+	$PlayerHp.text = "20/" + str(CurrentPlayerHealth)
+	$Fail.z_index = 3
 	DrawMana()
 	var file = FileAccess.open("user://" + "deck.txt", FileAccess.READ)
 	deck.clear()
@@ -374,6 +377,7 @@ func _on_enemy_gui_input(event):
 		if event.pressed:
 			match event.button_index:
 				MOUSE_BUTTON_LEFT:
+					if (WinFlag == false):
 						if (selectedCard):
 							if(selectedCard.isOnTable):
 								MenuAudio.BAM()
@@ -384,9 +388,17 @@ func _on_enemy_gui_input(event):
 									
 
 
-
-
+func FailFunction():
+	WinFlag = true
+	$FailLableAnimation.play("Fail")
+	await get_tree().create_timer(2).timeout
+	queue_free()
+	SceneTransition.change_buttons(self,"res://KCards/scenes/menu/difficulty_mode_menu.tscn")
+	MenuAudio.changeBackgroundMusic("menu")
+	
 func WinFunction():
+	WinFlag = true
+	get_node("EnemyAcitve").disabled = true
 	$WinnerLableAnimation.play("WinAn")
 	await get_tree().create_timer(2).timeout
 	queue_free()
@@ -413,7 +425,9 @@ func moveAI():
 	# Если карта которая хранится в колоде по индексу IndexCard является способностью,
 	# то она не кладется на стол
 	#if (CardsDatabase.DATA[deckAI[indexCard]][1] == "Ability"):
+	print("Ehh")
 	if (CardsDatabase.DATA[deckAI[indexCard]]["type"] == "Ability"):
+		print("OHh")
 		var visibleCardAI = Card.instantiate()
 		visibleCardAI.z_index = 2
 		add_child(visibleCardAI)
@@ -423,6 +437,13 @@ func moveAI():
 		await get_tree().create_timer(2).timeout
 		visibleCardAI.queue_free()
 		return
+	print("ahh")
+	attackCard()
+	print("OUT ",CurrentPlayerHealth)
+	$PlayerHp.text = "20/" + str(CurrentPlayerHealth)
+	print("uuh")
+	if CurrentPlayerHealth <= 0:
+		FailFunction()
 	# выбираем слот 
 	var index = rng.randi_range(0, freeCellAIDeck.size() - 1)
 	var indexCell = freeCellAIDeck[index]
@@ -439,8 +460,41 @@ func moveAI():
 	# удаляем карту из доступной колоды
 	deckAI.remove_at(indexCard)
 	
-	
-	
+# Адская атака
+func attackCard():
+	var rng = RandomNumberGenerator.new()
+	var random_number = rng.randi_range(0, 2)
+	if random_number == 0:
+		
+		if (outerCircleCardNames != null and innerCircleCardNames != null ):
+			for i in outerCircleCardNames:
+				if i != null:
+
+					for j in innerCircleCardNames:
+						if j != null:
+							j.hp -= i.attack
+							i.hp -= j.attack
+							
+							if (i.hp <= 0 ):
+					
+								freeCellAIDeck.append(outerCircleCardNames.find(i))
+								i.queue_free()
+								print(outerCircleCardNames)
+							if (j.hp <= 0 ):
+					
+								j.queue_free()
+							j.display_card_void()
+							i.display_card_void()
+							return
+	else:
+		for i in outerCircleCardNames:
+			if i != null:
+				if i.attack != 0:
+					random_number = rng.randi_range(0, 5)
+					if  random_number < 3: 
+						MenuAudio.BAM()
+						CurrentPlayerHealth -= i.attack
+						return
 
 func putCardOnTable(visibleCardAI, card, indexCell):
 	
@@ -507,9 +561,12 @@ func onSelectAICard(card):
 			card.hp = card.hp - selectedCard.attack
 			selectedCard.hp = selectedCard.hp - card.attack
 			if (card.hp <= 0 ):
-				
+				print (card.id)
+				deckAI.append(card.id - 1)
 				freeCellAIDeck.append(outerCircleCardNames.find(card))
 				card.queue_free()
+				print (deckAI)
+				
 			
 			if (selectedCard.hp <= 0 ):
 				selectedCard.queue_free()

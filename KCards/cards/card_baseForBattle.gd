@@ -28,7 +28,7 @@ var isTargetable # Относится только к способностям, 
 var type
 var effectFunctionName : String
 var effectFunctionArgs : Array
-
+var id
 var isSelectedTexturePath = "res://KCards/images/card/assets/card_background_framed_white.png"
 var isSelectedTexture = load(isSelectedTexturePath)
 var regularTexturePath = "res://KCards/images/card/assets/card_background.png"
@@ -47,7 +47,7 @@ func display_card(x: int, y: int, scaler: float, index: int, mouseLeftPressedCal
 	var CardInfo = CardsDatabase.DATA[index]
 	self.scale = Vector2(scaler, scaler)
 	self.mouseLeftPressedCallback = mouseLeftPressedCallback
-	
+	self.id = CardInfo["id"]
 	
 	var CardSize = $Button.size
 	#self.type = CardInfo[1]
