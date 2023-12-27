@@ -394,6 +394,7 @@ func _on_enemy_gui_input(event):
 										$EnemyHP.text = "20/" + str(currentEnemyHealth)
 										WinFunction();
 									$EnemyHP.text = "20/" + str(currentEnemyHealth)
+									deselectCard()
 									
 
 
