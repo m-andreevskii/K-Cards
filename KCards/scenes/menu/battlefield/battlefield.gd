@@ -367,11 +367,14 @@ func _on_enemy_acitve_gui_input(event):
 				MOUSE_BUTTON_LEFT:
 						if (selectedCard):
 							if(selectedCard.isOnTable):
-								MenuAudio.BAM()
-								currentEnemyHealth -= selectedCard.attack
-								$EnemyHP.text = "20/" + str(currentEnemyHealth)
-								if currentEnemyHealth <= 0:
-									WinFunction();
+								if (selectedCard.isCardPlayed == 0):
+									MenuAudio.BAM()
+									selectedCard.isCardPlayed = 1
+									currentEnemyHealth -= selectedCard.attack
+									$EnemyHP.text = "20/" + str(currentEnemyHealth)
+									if currentEnemyHealth <= 0:
+										currentEnemyHealth = 0
+										WinFunction();
 
 
 func _on_enemy_gui_input(event):
@@ -382,11 +385,15 @@ func _on_enemy_gui_input(event):
 					if (WinFlag == false):
 						if (selectedCard):
 							if(selectedCard.isOnTable):
-								MenuAudio.BAM()
-								currentEnemyHealth -= selectedCard.attack
-								$EnemyHP.text = "20/" + str(currentEnemyHealth)
-								if currentEnemyHealth <= 0:
-									WinFunction();
+								if (selectedCard.isCardPlayed == 0):
+									selectedCard.isCardPlayed = 1
+									MenuAudio.BAM()
+									currentEnemyHealth -= selectedCard.attack
+									if currentEnemyHealth <= 0:
+										currentEnemyHealth = 0
+										$EnemyHP.text = "20/" + str(currentEnemyHealth)
+										WinFunction();
+									$EnemyHP.text = "20/" + str(currentEnemyHealth)
 									
 
 
