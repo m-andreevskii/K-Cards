@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://gin8ym3srci0"]
 
 [ext_resource type="Script" path="res://KCards/scenes/audio/menu_audio.gd" id="1_n2x28"]
+[ext_resource type="AudioStream" uid="uid://d3wsf2argq41o" path="res://KCards/audio/music/Menu_theme_v01.mp3" id="2_8eltl"]
 [ext_resource type="AudioStream" uid="uid://ndh2o1x5h0k1" path="res://KCards/audio/sound_effects/button_click_01.mp3" id="2_f3145"]
-[ext_resource type="AudioStream" uid="uid://o57wepq1qi4y" path="res://KCards/audio/music/Menu_theme_v02.mp3" id="2_kxksu"]
 [ext_resource type="AudioStream" uid="uid://bkfucfnrx774s" path="res://KCards/audio/music/deck_building_v02.mp3" id="4_xfegl"]
 [ext_resource type="AudioStream" uid="uid://y6a2wingommn" path="res://KCards/audio/music/Battle_theme_v02.mp3" id="5_0mcsp"]
 [ext_resource type="AudioStream" uid="uid://dpov7wr78cfa8" path="res://KCards/audio/sound_effects/draw_cards_01.wav" id="6_1rsr8"]
@@ -13,7 +13,7 @@
 script = ExtResource("1_n2x28")
 
 [node name="MenuBackGroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_kxksu")
+stream = ExtResource("2_8eltl")
 volume_db = -10.0
 autoplay = true
 
