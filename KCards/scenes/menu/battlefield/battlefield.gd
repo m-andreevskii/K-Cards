@@ -18,7 +18,7 @@ var deckAI = []
 var cellAIDeck = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
 var freeCellAIDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-var selectedCard = null
+var selectedCard : BattleCard = null
 var outerCircleCardNames = []
 var innerCircleCardNames = []
 var numberOfCardsInCircle = 12
@@ -27,6 +27,19 @@ var CardInfo = CardsDatabase
 var currentEnemyHealth = 20
 var availableMana = 3
 var manaShift = 3
+
+
+func selectCard(card: BattleCard):
+	if (selectedCard):
+		selectedCard.doVisualDeselect()
+	selectedCard = card
+	selectedCard.doVisualSelect()
+	
+func deselectCard():
+	if (selectedCard):
+		selectedCard.doVisualDeselect()
+		selectedCard = null
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,7 +93,7 @@ func DrawMana():
 				ManaSprites[i].texture = Empty_Mana
 			
 		3:	
-			print("asdassssssssssssss")
+			#print("asdassssssssssssss")
 			for i in range(3):
 				ManaSprites[i].texture = Full_Mana
 			for i in range(3,6):
@@ -132,12 +145,15 @@ func _process(delta):
 
 
 func _on_move_button_pressed():
+	deselectCard()
+	$CardSlotsGlow.stop()
+	
 	playerHand.clear()
 	for x in playerHandVision:
 		x.queue_free()
 	playerHandVision.clear()
 	drawCards(CardIndex,5)
-	print(manaShift)
+	#print(manaShift)
 	if manaShift != 6:
 		manaShift += 0.5
 	availableMana = int(floor(manaShift))
@@ -153,14 +169,29 @@ func saveFile():
 	file.store_line("END")
 
 func cardActions(card):
-	#selectedCard = card.name
+	if (selectedCard and selectedCard.isTargetable and card.isOnTable):
+		if selectedCard.cost <= availableMana:
+			availableMana -= selectedCard.cost
+			DrawMana()
+			TargetableAbilities.cast(selectedCard.effectFunctionName, card, selectedCard.effectFunctionArgs)
+			playerHandVision.erase(selectedCard)
+			selectedCard.queue_free()
+			
+		deselectCard()
+		return
+				
+	selectCard(card)
+	"""
+	if (selectedCard):
+		selectedCard.doVisualDeselect()
+	card.doVisualSelect()
 	selectedCard = card
+	"""
 	if (card.isOnTable):
 		print("card is on table")
 	else:
 		$CardSlotsGlow.play("Glows")
-		#selectedCard = 
-	
+		
 	
 	
 	
@@ -168,12 +199,12 @@ func putPlayerCardOnTable(card, slotID: int):
 	var x = 0
 	var y = 0
 	var rotation = 0
-	print("abll: ",availableMana)
-	if card.mana > availableMana:
-		print(card.mana)
-		print(availableMana)
+	#print("abll: ",availableMana)
+	if card.cost > availableMana:
+		#print(card.cost)
+		#print(availableMana)
 		return
-	availableMana -= card.mana
+	availableMana -= card.cost
 	DrawMana()
 	card.scale = Vector2(cardScaleOnTable, cardScaleOnTable) 
 	playerHandVision.erase(card)
@@ -234,16 +265,17 @@ func putPlayerCardOnTable(card, slotID: int):
 			card.rotation = -(PI/8)	
 			
 	card.display_card(x, y, cardScaleOnTable, card.index, cardActions)
-	card.isOnTable = 1
+	card.isOnTable = true
 	
-	selectedCard = null
+	deselectCard()
 	$CardSlotsGlow.play_backwards("Glows")
 	
+"""
 func attackCardOnTable(slotID: int):
 	var chosenCard = outerCircleCardNames[slotID]
 	if chosenCard:
 		chosenCard.hp = chosenCard.hp - 1
-		
+		"""
 	
 func useCardSlot(event, slotID: int, isInnerCircle: bool):
 	if event is InputEventMouseButton:
@@ -335,7 +367,25 @@ func _on_enemy_acitve_gui_input(event):
 								$EnemyHP.text = "20/" + str(currentEnemyHealth)
 								if currentEnemyHealth <= 0:
 									WinFunction();
-	
+
+
+func _on_enemy_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+						if (selectedCard):
+							if(selectedCard.isOnTable):
+								MenuAudio.BAM()
+								currentEnemyHealth -= selectedCard.attack
+								$EnemyHP.text = "20/" + str(currentEnemyHealth)
+								if currentEnemyHealth <= 0:
+									WinFunction();
+									
+
+
+
+
 func WinFunction():
 	$WinnerLableAnimation.play("WinAn")
 	await get_tree().create_timer(2).timeout
@@ -362,11 +412,13 @@ func moveAI():
 	var indexCard = rng.randi_range(0, deckAI.size() - 1)
 	# Если карта которая хранится в колоде по индексу IndexCard является способностью,
 	# то она не кладется на стол
-	if (CardsDatabase.DATA[deckAI[indexCard]][1] == "Ability"):
+	#if (CardsDatabase.DATA[deckAI[indexCard]][1] == "Ability"):
+	if (CardsDatabase.DATA[deckAI[indexCard]]["type"] == "Ability"):
 		var visibleCardAI = Card.instantiate()
 		visibleCardAI.z_index = 2
 		add_child(visibleCardAI)
-		visibleCardAI.display_card(410, 440, 0.27, deckAI[indexCard], cardActions)
+		#visibleCardAI.display_card(410, 440, 0.27, deckAI[indexCard], onSelectAICard)
+		visibleCardAI.display_card(410, 440, 0.27, deckAI[indexCard], func(x): return)
 		visibleCardAI.playSpellAnimation()
 		await get_tree().create_timer(2).timeout
 		visibleCardAI.queue_free()
@@ -379,7 +431,8 @@ func moveAI():
 	# добавлем карту в видимые карты ИИ по индесу слота
 	var visibleCardAI = Card.instantiate()
 	add_child(visibleCardAI)
-	visibleCardAI.isOnTable = -1
+	#visibleCardAI.isOnTable = -1
+	visibleCardAI.isOnTable = false
 	#Добавляем карту в массив карт которые находятся на внешнем круге
 	outerCircleCardNames[indexCell] = visibleCardAI
 	putCardOnTable(visibleCardAI, deckAI[indexCard], indexCell)
@@ -460,11 +513,21 @@ func onSelectAICard(card):
 			
 			if (selectedCard.hp <= 0 ):
 				selectedCard.queue_free()
-				# Удалить selectedCard из массива innerCircleCardNames
-	
+				# TODO: Удалить selectedCard из массива innerCircleCardNames
+		
+		if (selectedCard.type == "Ability" and selectedCard.isTargetable):
+			if selectedCard.cost <= availableMana:
+				availableMana -= selectedCard.cost
+				DrawMana()
+				TargetableAbilities.cast(selectedCard.effectFunctionName, card, selectedCard.effectFunctionArgs)
+				playerHandVision.erase(selectedCard)
+				selectedCard.queue_free()
+			
+			
 		selectedCard.display_card_void()
 		card.display_card_void()
-		selectedCard = null
+		#selectedCard = null
+		deselectCard()
 			
 	return
 	

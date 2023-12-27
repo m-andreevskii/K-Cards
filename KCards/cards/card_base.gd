@@ -14,6 +14,11 @@ var scaler = 0
 var x = 127.5
 var y = 175
 var Description
+var type
+var hp
+var attack 
+var cost
+
 var default_z_index = self.z_index
 var mouseLeftPressedCallback
 # Called when the node enters the scene tree for the first time.
@@ -31,30 +36,38 @@ func display_card(x: int, y: int, scaler: float, index: int, mouseLeftPressedCal
 	self.mouseLeftPressedCallback = mouseLeftPressedCallback
 	
 	var CardSize = $Button.size
-	var type = CardInfo[1]
+	#var type = CardInfo[1]
+	self.type = CardInfo["type"]
 	if type == "Ability":
 		$Button/Bars/BottomBar/Attack.visible = false
 		$Button/Bars/BottomBar/Health.visible = false
 	else: 
 		$Button/Bars/BottomBar/Attack.visible = true
 		$Button/Bars/BottomBar/Health.visible = true
-	CardImage = str("res://KCards/images/card/card_images/", CardInfo[5])
+		attack = CardInfo["attack"]
+		hp = CardInfo["health"]
+		$Button/Bars/BottomBar/Attack/CenterContainer/attackBackground/Attack.text = str(attack)
+		$Button/Bars/BottomBar/Health/CenterContainer/healthBackground/Health.text = str(hp)
+		
+	#CardImage = str("res://KCards/images/card/card_images/", CardInfo[5])
+	CardImage = str("res://KCards/images/card/card_images/", CardInfo["imageName"])	
 	$Button/Background.scale = CardSize/$Button/Background.texture.get_size()
 	#$Bars/Name/CenterContainer/nameBackground.scale *= CardSize/$Background.texture.get_size()
 	$Button/Bars/Image.texture = load(CardImage)
 	if ($Button/Bars/Image.texture != null):
 		$Button/Bars/Image.scale = CardSize/($Button/Bars/Image.texture.get_size())
-
+	"""
 	if type != "Ability":
 		var Attack = str(CardInfo[6])
 		var Health = str(CardInfo[7])
 		$Button/Bars/BottomBar/Attack/CenterContainer/attackBackground/Attack.text = Attack
 		$Button/Bars/BottomBar/Health/CenterContainer/healthBackground/Health.text = Health
-
-	var Cost = str(CardInfo[2]) 
-	Description = str(CardInfo[4])
-	$Button/Bars/Name/CenterContainer/nameBackground/Name.text = CardInfo[3]
-	$Button/Bars/TopBar/Cost/CenterContainer/costBackground/Cost.text = Cost
+"""
+	#var Cost = str(CardInfo[2]) 
+	cost = CardInfo["cost"]
+	Description = str(CardInfo["description"])
+	$Button/Bars/Name/CenterContainer/nameBackground/Name.text = CardInfo["name"]
+	$Button/Bars/TopBar/Cost/CenterContainer/costBackground/Cost.text = str(cost)
 	$Button/Bars/Description/CenterContainer/descrBackground/Description.text = Description
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

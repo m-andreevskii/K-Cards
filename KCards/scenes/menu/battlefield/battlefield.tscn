@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwu7fa6vlh3fd"]
+[gd_scene load_steps=21 format=3 uid="uid://cwu7fa6vlh3fd"]
 
 [ext_resource type="Script" path="res://KCards/scenes/menu/battlefield/battlefield.gd" id="1_mjkct"]
 [ext_resource type="Texture2D" uid="uid://bjnjhc5yx1ctq" path="res://KCards/images/battlefield/background1.png" id="1_nripy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsi35xxns5k4l" path="res://KCards/images/battlefield/mana5.png" id="3_6xqd5"]
 [ext_resource type="Texture2D" uid="uid://cqnl3wm55v5nb" path="res://KCards/images/battlefield/field.png" id="5_0u8hq"]
 [ext_resource type="Texture2D" uid="uid://d0qh1xpqdan04" path="res://KCards/images/battlefield/enemy.png" id="6_5yj3l"]
+[ext_resource type="Texture2D" uid="uid://bkrp47hqv2xrq" path="res://KCards/images/battlefield/enemy_framed_white.png" id="6_d7cw4"]
 [ext_resource type="Texture2D" uid="uid://lnnwjkdmqi2" path="res://KCards/images/battlefield/button-move_hover.png" id="8_7wm3v"]
 [ext_resource type="Texture2D" uid="uid://dg0tttbrrlv05" path="res://KCards/images/battlefield/button-move.png" id="8_adde7"]
 [ext_resource type="Texture2D" uid="uid://bftydw3r0evs2" path="res://KCards/images/battlefield/button-move_pressed.png" id="8_gwkw5"]
@@ -128,10 +129,20 @@ position = Vector2(344, 253)
 scale = Vector2(0.841667, 0.841667)
 texture = ExtResource("5_0u8hq")
 
-[node name="Enemy" type="Sprite2D" parent="."]
+[node name="Enemy_sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(353, 55)
 scale = Vector2(0.68125, 0.68125)
 texture = ExtResource("6_5yj3l")
+
+[node name="Enemy" type="TextureButton" parent="."]
+offset_left = 295.0
+offset_top = 5.0
+offset_right = 485.0
+offset_bottom = 165.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("6_5yj3l")
+texture_hover = ExtResource("6_d7cw4")
 
 [node name="MoveButton" type="TextureButton" parent="."]
 offset_left = 585.0
@@ -416,6 +427,7 @@ offset_bottom = 38.0
 text = "20"
 
 [node name="EnemyAcitve" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -481,6 +493,7 @@ texture = ExtResource("3_6xqd5")
 position = Vector2(29, 77)
 texture = ExtResource("3_6xqd5")
 
+[connection signal="gui_input" from="Enemy" to="." method="_on_enemy_gui_input"]
 [connection signal="pressed" from="MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="gui_input" from="PlayerCards/P3" to="." method="_on_p_3_gui_input"]
 [connection signal="gui_input" from="PlayerCards/P9" to="." method="_on_p_9_gui_input"]
