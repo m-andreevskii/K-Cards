@@ -13,7 +13,7 @@ config_version=5
 config/name="KCards"
 run/main_scene="res://KCards/scenes/welcome_window.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://K_Cards_icon.png"
 
 [autoload]
 
