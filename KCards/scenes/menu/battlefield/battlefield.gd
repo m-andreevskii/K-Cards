@@ -293,6 +293,7 @@ func useCardSlot(event, slotID: int, isInnerCircle: bool):
 						
 							# проверка является ли карта Юнитом и можно ли её положить на стол
 							if(selectedCard.type == "Units"):
+								scaleCardParametres(selectedCard)
 								putPlayerCardOnTable(selectedCard, slotID)
 								
 					pass
@@ -571,9 +572,15 @@ func putCardOnTable(visibleCardAI, card, indexCell):
 			x = get_node("EnemyCards/E12").position.x + 25
 			y = get_node("EnemyCards/E12").position.y + 9
 			visibleCardAI.rotation = -(PI/8)			
-			
+	#visibleCardAI.find_child("Health").find_child("Health").add_theme_font_size_override("font_size", 59)
+	scaleCardParametres(visibleCardAI)
 	visibleCardAI.display_card(x, y, 0.14, card, onSelectAICard)
 	cellAIDeck[indexCell] = visibleCardAI 
+
+func scaleCardParametres(card):
+	card.find_child("healthBackground").scale = Vector2(3,3)
+	card.find_child("attackBackground").scale = Vector2(3,3)
+	card.find_child("Description").find_child("Description").visible = false
 	
 func onSelectAICard(card):
 	if (selectedCard):
@@ -603,7 +610,7 @@ func onSelectAICard(card):
 				playerHandVision.erase(selectedCard)
 				selectedCard.queue_free()
 			
-			
+
 		selectedCard.display_card_void()
 		card.display_card_void()
 		#selectedCard = null

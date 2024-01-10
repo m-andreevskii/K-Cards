@@ -275,6 +275,7 @@ scale = Vector2(1.094, 1)
 texture = ExtResource("6_wmrt1")
 
 [node name="Attack" type="Label" parent="Button/Bars/BottomBar/Attack/CenterContainer/attackBackground"]
+modulate = Color(0.215686, 0.937255, 0.847059, 1)
 offset_left = -80.8958
 offset_top = -95.0
 offset_right = 79.1042
