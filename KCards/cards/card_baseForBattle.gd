@@ -173,6 +173,9 @@ func _on_button_gui_input(event):
 					mouseLeftPressedCallback.call(self)
 				MOUSE_BUTTON_RIGHT:	
 					# while right mouse button is pressed, the card's scale is to twice as big as default
+						$Button/Bars/BottomBar/Attack/CenterContainer/attackBackground.scale = Vector2(1,1)
+						$Button/Bars/BottomBar/Health/CenterContainer/healthBackground.scale = Vector2(1,1)
+						$Button/Bars/Description/CenterContainer/descrBackground/Description.visible = true
 						self.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
 						rotationBackUp = self.rotation
 						self.rotation = 0
@@ -186,8 +189,13 @@ func _on_button_gui_input(event):
 					pass
 				MOUSE_BUTTON_RIGHT:	
 					# when right mouse button is released, card's scale is set to default value
+				
 						$AnimationPlayer.play_backwards("Scale_Grow")
 						await $AnimationPlayer.animation_finished
+						if self.scaler == 0.14:
+							$Button/Bars/BottomBar/Attack/CenterContainer/attackBackground.scale = Vector2(3,3)
+							$Button/Bars/BottomBar/Health/CenterContainer/healthBackground.scale = Vector2(3,3)
+							$Button/Bars/Description/CenterContainer/descrBackground/Description.visible = false
 						self.scale = Vector2(scaler, scaler)
 						self.rotation = rotationBackUp
 						self.position = Vector2(x, y)
